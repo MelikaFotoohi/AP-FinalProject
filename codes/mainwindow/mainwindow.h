@@ -1,7 +1,9 @@
+#pragma once
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "login.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -11,11 +13,15 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
 
+public:
+     MainWindow( QWidget *parent = nullptr);
+     ~MainWindow();
+
+public slots:
+      void openLoginPage();
 private:
     Ui::MainWindow *ui;
+
 };
 #endif // MAINWINDOW_H
