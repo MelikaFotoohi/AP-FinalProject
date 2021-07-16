@@ -1,6 +1,6 @@
 #include "developmentcard.h"
 
-DevelopmentCard::DevelopmentCard(developmentCard developmentType)
+DevelopmentCard::DevelopmentCard(developmentType type)
 {
 
 }
