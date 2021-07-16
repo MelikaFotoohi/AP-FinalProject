@@ -1,19 +1,23 @@
 #ifndef LOCATION_H
 #define LOCATION_H
 #include <QVector>
-enum location {edge, vertice, tile};
+
+enum locationType {edge, vertice, tile};
+
 class Location
 {
 public:
-    Location(int x, int y, location);
+    Location(int _x, int _y, locationType);
     Location();
     QVector<Location> getADjacent();
+    int getX();
+    int getY();
     void findAdjacent();
     int distance(Location);
 private:
     int x;
     int y;
-    location locationType;
+    locationType type;
 
 };
 
