@@ -2,18 +2,18 @@
 #define DEVELOPMENTCARD_H
 #include "card.h"
 
-enum developmentCard {victoryPointCard, KnightCard, roadBuildingCard, yearOfPlentyCard, monopolyCard  };
+enum developmentType {victoryPointCard, KnightCard, roadBuildingCard, yearOfPlentyCard, monopolyCard  };
 
 class DevelopmentCard : public Card
 {
 public:
-    DevelopmentCard(developmentCard developmentType);
+    DevelopmentCard(developmentType type);
     void draw();
     void checkMaxCount();
 
 private:
     QString name;
-    developmentCard developmentType;
+    developmentType type;
 };
 
 #endif // DEVELOPMENTCARD_H
