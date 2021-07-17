@@ -59,8 +59,6 @@ public slots:
     void showSetllement();
     void showCity();
 
-signals:
-
 
 
 };
