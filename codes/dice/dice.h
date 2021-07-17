@@ -2,19 +2,20 @@
 #define DICE_H
 
 #include <QWidget>
-
+#include "Map.h"
+#include "player.h"
 class Dice : public QWidget
 {
     Q_OBJECT
 public:
-    Dice(QWidget *parent = nullptr);
+    explicit Dice(Map* _map,QWidget *parent = nullptr);
+public slots:
     void roll();
-    void draw();
-
 private:
-    int value;
-signals:
-
+    static int diceNum;
+    Map* map;
+    Ui::Map *ui;
 };
 
 #endif // DICE_H
+
