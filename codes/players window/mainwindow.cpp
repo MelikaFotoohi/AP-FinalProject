@@ -4,59 +4,57 @@
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);    
-    this->setFixedSize(490,670);
-
-    this->centralWidget()->setStyleSheet( "background-image:url(\"/Users/AHFB/Favorites/Desktop/catan images/background/22.jpg\"); background-position: center;");
+    this->setFixedSize(432,400);
 
     ui->playerUsernameLine->setText("player1");
 
-    QPixmap pixmap("/Users/AHFB/Favorites/Desktop/catan images/resource cards/brick2.jpg");
+    QPixmap pixmap("/Users/AHFB/Favorites/Desktop/catan images/resourceCards/brick1.jpg");
     QIcon ButtonIcon(pixmap);
     setIconForPushButton(pixmap, ButtonIcon, ui->pushButton);
 
-    QPixmap pixmap2("/Users/AHFB/Favorites/Desktop/catan images/resource cards/grain2.jpg");
+    QPixmap pixmap2("/Users/AHFB/Favorites/Desktop/catan images/resourceCards/grain1.jpg");
     QIcon ButtonIcon2(pixmap2);
     setIconForPushButton(pixmap2, ButtonIcon2, ui->pushButton_2);
 
-    QPixmap pixmap3("/Users/AHFB/Favorites/Desktop/catan images/resource cards/lumber2.jpg");
+    QPixmap pixmap3("/Users/AHFB/Favorites/Desktop/catan images/resourceCards/lumber1.jpg");
     QIcon ButtonIcon3(pixmap3);
     setIconForPushButton(pixmap3, ButtonIcon3, ui->pushButton_3);
 
-    QPixmap pixmap4("/Users/AHFB/Favorites/Desktop/catan images/resource cards/ore2.jpg");
+    QPixmap pixmap4("/Users/AHFB/Favorites/Desktop/catan images/resourceCards/ore1.jpg");
     QIcon ButtonIcon4(pixmap4);
     setIconForPushButton(pixmap4, ButtonIcon4, ui->pushButton_4);
 
-    QPixmap pixmap5("/Users/AHFB/Favorites/Desktop/catan images/resource cards/wool2.jpg");
+    QPixmap pixmap5("/Users/AHFB/Favorites/Desktop/catan images/resourceCards/wool1.jpg");
     QIcon ButtonIcon5(pixmap5);
     setIconForPushButton(pixmap5, ButtonIcon5, ui->pushButton_5);
 
-    QPixmap pixmap6("/Users/AHFB/Favorites/Desktop/catan images/development cards/knight1.jpg");
+    QPixmap pixmap6("/Users/AHFB/Favorites/Desktop/catan images/developmentCards/knight.jpg");
     QIcon ButtonIcon6(pixmap6);
     setIconForPushButton(pixmap6, ButtonIcon6, ui->pushButton_6);
 
-    QPixmap pixmap7("/Users/AHFB/Favorites/Desktop/catan images/development cards/monopoly1.jpg");
+    QPixmap pixmap7("/Users/AHFB/Favorites/Desktop/catan images/developmentCards/monopoly.jpg");
     QIcon ButtonIcon7(pixmap7);
     setIconForPushButton(pixmap7, ButtonIcon7, ui->pushButton_7);
 
-    QPixmap pixmap8("/Users/AHFB/Favorites/Desktop/catan images/development cards/road_buildings1.jpg");
+    QPixmap pixmap8("/Users/AHFB/Favorites/Desktop/catan images/developmentCards/road_building.jpg");
     QIcon ButtonIcon8(pixmap8);
     setIconForPushButton(pixmap8, ButtonIcon8, ui->pushButton_8);
 
-    QPixmap pixmap9("/Users/AHFB/Favorites/Desktop/catan images/development cards/year_of_plenty1.jpg");
+    QPixmap pixmap9("/Users/AHFB/Favorites/Desktop/catan images/developmentCards/year_of_plenty.jpg");
     QIcon ButtonIcon9(pixmap9);
     setIconForPushButton(pixmap9, ButtonIcon9, ui->pushButton_9);
 
-    QPixmap pixmap10("/Users/AHFB/Favorites/Desktop/catan images/development cards/victory_point21.jpg");
+    QPixmap pixmap10("/Users/AHFB/Favorites/Desktop/catan images/developmentCards/victory_point.jpg");
     QIcon ButtonIcon10(pixmap10);
     setIconForPushButton(pixmap10, ButtonIcon10, ui->pushButton_10);
 
-    QPixmap pixmap11("/Users/AHFB/Favorites/Desktop/catan images/special cards/largest_army.jpg");
-    QIcon ButtonIcon11(pixmap11);
-    setIconForPushButton(pixmap11, ButtonIcon11, ui->pushButton_11);
+//    QPixmap pixmap11("/Users/AHFB/Favorites/Desktop/catan images/special cards/largest_army1.jpg");
+//    QIcon ButtonIcon11(pixmap11);
+//    setIconForPushButton(pixmap11, ButtonIcon11, ui->pushButton_11);
 
-    QPixmap pixmap12("/Users/AHFB/Favorites/Desktop/catan images/special cards/longest_road.jpg");
-    QIcon ButtonIcon12(pixmap12);
-    setIconForPushButton(pixmap12, ButtonIcon12, ui->pushButton_12);
+//    QPixmap pixmap12("/Users/AHFB/Favorites/Desktop/catan images/special cards/longest_road1.jpg");
+//    QIcon ButtonIcon12(pixmap12);
+//    setIconForPushButton(pixmap12, ButtonIcon12, ui->pushButton_12);
 
     QPixmap pixmap13("/Users/AHFB/Favorites/Desktop/catan images/pieces/road4.jpg");
     QIcon ButtonIcon13(pixmap13);
@@ -70,11 +68,7 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     QIcon ButtonIcon15(pixmap15);
     setIconForPushButton(pixmap15, ButtonIcon15, ui->pushButton_15);
 
-    QPixmap pixmap16("/Users/AHFB/Favorites/Desktop/catan images/trade_icon.png");
-    QIcon ButtonIcon16(pixmap16);
-    setIconForPushButton(pixmap16, ButtonIcon16, ui->pushButton_16);
-
-    connect(ui->pushButton_16, SIGNAL(clicked()), this, SLOT(goToTradeWindow()));
+    connect(ui->pushButton_11, SIGNAL(clicked()), this, SLOT(goToTradeWindow()));
 }
 
 void MainWindow::setIconForPushButton(QPixmap pix, QIcon icon, QPushButton* button)
