@@ -1819,8 +1819,8 @@
    <widget class="QPushButton" name="pushButton_6">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>150</y>
+      <x>355</x>
+      <y>153</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -2082,7 +2082,7 @@
    <widget class="QPushButton" name="pushButton_16">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>300</x>
       <y>450</y>
       <width>31</width>
       <height>31</height>
@@ -2239,6 +2239,22 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="robber">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>350</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string> robber</string>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../robber.png</pixmap>
     </property>
    </widget>
   </widget>
