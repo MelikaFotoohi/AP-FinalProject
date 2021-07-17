@@ -1,4 +1,5 @@
 QT       += core gui
+QT       += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -10,31 +11,51 @@ CONFIG += c++11
 
 SOURCES += \
     bank.cpp \
+    building.cpp \
     card.cpp \
     developmentcard.cpp \
     dice.cpp \
+    game.cpp \
     location.cpp \
+    login.cpp \
     main.cpp \
     mainwindow.cpp \
+    map.cpp \
+    player.cpp \
     port.cpp \
     resourcecard.cpp \
     robber.cpp \
-    specialcard.cpp
+    specialcard.cpp \
+    thread.cpp \
+    tile.cpp \
+    trade.cpp
 
 HEADERS += \
     bank.h \
+    building.h \
     card.h \
     developmentcard.h \
     dice.h \
+    game.h \
     location.h \
+    login.h \
     mainwindow.h \
+    map.h \
+    player.h \
     port.h \
     resourcecard.h \
     robber.h \
-    specialcard.h
+    specialcard.h \
+    thread.h \
+    tile.h \
+    trade.h
 
 FORMS += \
-    mainwindow.ui
+    login.ui \
+    mainwindow.ui \
+    map.ui \
+    player.ui \
+    trade.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
