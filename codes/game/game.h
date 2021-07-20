@@ -3,15 +3,13 @@
 
 #include <QVector>
 #include <QTcpServer>
-#include <QMainWindow>
 #include "player.h"
-#include "Map.h"
+#include "map.h"
 #include "bank.h"
 #include "thread.h"
 #include "dice.h"
 #include "trade.h"
 #include "login.h"
-#include "winners.h"
 
 #include <QSignalMapper>
 #include <QMessageBox>
@@ -22,18 +20,21 @@ class Game : public QMainWindow
 public:
     Game(QWidget *parent = nullptr);
     void startGame();
-    void checkWinner();
-    void showWinner();
+    void checkWining();
     void settlementConnect();
     void roadConnect();
     void monopolyConnect();
     void yearOfPlentyConnect();
-
-
+    void showWinner();
+    void changeTurn(Player* pre,Player* cur);
+    void setColorForSettlements(Player* thePlayer, QPixmap pixmap, QPushButton* housePB);
+    void setColorForCities(Player * thePlayer, QPixmap pixmap, QPushButton * cityPB);
+    void setColorForRoads(Player *thePlayer, QPixmap pixmap, QPushButton * roadPB);
+    void checkGettingMonopoly(tileType type, int n , int num);
 private:
-    QVector<Login*>logins;
     QSignalMapper *signalMapper;
     QVector<Player*> players;
+    QVector<login*> logins;
     Player* player1;
     Player* player2;
     Player* player3;
@@ -49,8 +50,7 @@ private:
     static int currPlayer;
     static int gameStarted_;
     static int player_;
-
-
+    static int count;
 
 public slots:
     void goToLogin(int);
@@ -66,7 +66,6 @@ public slots:
     void getDevelopment();
     void getMonopoly(int);
     void getYeatOfPlenty(int);
-
 
 };
 
