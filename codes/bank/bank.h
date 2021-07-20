@@ -4,36 +4,41 @@
 #include <QWidget>
 #include <QPushButton>
 #include "tile.h"
-#include "player.h"
 #include "resourcecard.h"
 #include "developmentcard.h"
+#include "map.h"
+class Player;
 
 class Bank : public QWidget
 {
     Q_OBJECT
 public:
-    explicit Bank(QWidget *parent = nullptr);
+    explicit Bank(Map* map,QWidget *parent = nullptr);
     void giveResCardToPlayer(tileType);
-    void giveDevCardToPlayer(developmentType);
-    void getCardFromPlayer(resourceType);
+    developmentType giveDevCardToPlayer();
+    tileType giveResCard();
+    void getCardFromPlayer(tileType);
     void giveCardToWhom(Tile* tile,Player* player);
     void settlementBought();
     void roadBought();
     void cityBought();
-
+    bool checkNumDev(int n);
+    bool checkNumRes(int n);
+//    void giveCardFirtTime(Player* p,Tile t);
 
 private:
-    int numVictoryCard;
-    int numKnightCard;
-    int numRoadBuildingCard;
-    int numYearOfPlenty;
-    int numMonopoy;
+    Map* map;
+    int numVictoryCard = 5;
+    int numKnightCard = 14;
+    int numRoadBuildingCard = 2;
+    int numYearOfPlenty = 2;
+    int numMonopoly = 2;
 
-    int numFieldCard;
-    int numStoneCard;
-    int numClayCard;
-    int numPastureCard;
-    int numForestCard;
+    int numFieldCard = 20;
+    int numStoneCard = 20;
+    int numClayCard = 20;
+    int numPastureCard = 20;
+    int numForestCard = 20;
 
 
     bool largestArmyCard;
@@ -45,4 +50,3 @@ signals:
 };
 
 #endif // BANK_H
-
