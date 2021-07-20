@@ -24,8 +24,6 @@ public:
     Ui::Map *ui;
     explicit Map(QWidget *parent = nullptr);
     void randomMap(QVector<QPixmap>,QVector<QPixmap> pixs_nums);
-    bool tilesNumbers(int , QVector<int>);
-    bool tokenNumbers(int , QVector<int>);
     tileType TileType(int n);
     QVector<Tile*> getTiles();
     QVector<QPushButton*> getAvailableVertexs();
@@ -35,11 +33,12 @@ public:
     void removeVertex(QPushButton*);
     void removeEdge(QPushButton*);
     QVector<QLabel*> rollNumTile(int num);
+    bool tilesNumbers(int pixNum , QVector<int> tile_nums);
+    bool tokenNumbers(int , QVector<int>);
+    QVector<QPair<tileType,QPair<QPushButton*,QPushButton*>>> getPorts();
     ~Map();
 
 public slots:
-//    QVector<QPair<tileType,int>> getAdjacentVertex(QPushButton* p);
-//    QVector<QPair<int,int>> getAdjacentTile(QObject* p);
     void moveRobber(int);
 
 private:
@@ -53,6 +52,7 @@ private:
     QVector<QPushButton*> tokens;
     QVector<QPushButton*> vertexsAvailable;
     QVector<QPushButton*> edgesAvailable;
+    QVector<QPair<tileType,QPair<QPushButton*,QPushButton*>>> ports;
     Robber robber();
 
 };
