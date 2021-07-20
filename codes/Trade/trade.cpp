@@ -9,7 +9,7 @@ Trade::Trade(Bank* _bank,QVector<Player*> _players, int id,Map* _map,QWidget *pa
     playerId = id;
     bank = _bank;
 
-    ui->label_55->setText(players[playerId]->getName());
+    ui->label_11->setText(players[playerId]->getName());
     QVector<QCheckBox*> playersName {ui->checkBox1,ui->checkBox2,ui->checkBox3};
     for(int i=0,j=0;i<players.size();i++){
         if(i!=id){
@@ -17,8 +17,7 @@ Trade::Trade(Bank* _bank,QVector<Player*> _players, int id,Map* _map,QWidget *pa
             j++;
         }
     }
-
-    connect(ui->request, SIGNAL(clicked()), this, SLOT(waitForCheckingConditions()));
+    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(waitForCheckingConditions()));
 }
 
 Trade::~Trade()
@@ -71,8 +70,8 @@ void Trade::TradeRequest(bool back)
 
     if(ui->checkBox4->isChecked()){
         for(int i=0;i<cards.size();i++){
-            if(cards[i].second.first == 4){
-                for(int j=0;j<4;j++){
+            if(cards[i].second.first != 0){
+                for(int j=0;j<cards[i].second.first;j++){
                     bank->getCardFromPlayer(cards[i].first);
                     players[playerId]->giveResourceCard(cards[i].first);
                 }
@@ -85,11 +84,15 @@ void Trade::TradeRequest(bool back)
         players[playerId]->show();
         this->close();
     }
-    if(ui->checkBox1->isChecked())
+    QVector<QPair<tileType,int>> p2Cards {{clay,ui->spinBox6->value()},{field,ui->spinBox7->value()},
+                                          {forest,ui->spinBox8->value()},{stone,ui->spinBox9->value()},{pasture,ui->spinBox10->value()}};
+    if(ui->checkBox1->isChecked() && players[givePlayerId(ui->checkBox1->text())]->checkRequset(p2Cards))
         players[givePlayerId(ui->checkBox1->text())]->showRequest(cards,players[playerId]);
-    if(ui->checkBox2->isChecked())
+
+    if(ui->checkBox2->isChecked() && players[givePlayerId(ui->checkBox2->text())]->checkRequset(p2Cards))
         players[givePlayerId(ui->checkBox2->text())]->showRequest(cards,players[playerId]);
-    if(ui->checkBox3->isChecked())
+
+    if(ui->checkBox3->isChecked() && players[givePlayerId(ui->checkBox3->text())]->checkRequset(p2Cards))
         players[givePlayerId(ui->checkBox3->text())]->showRequest(cards,players[playerId]);
 
     players[playerId]->show();
@@ -129,19 +132,91 @@ void Trade::waitForCheckingConditions()
                 tr("You have to exchange 4 cards only with the bank!"));
         }
 
+        else if(ui->checkBox4->isChecked() == true && sumOfRecievedCards !=1 &&
+                (ui->spinBox1->value() == players[playerId]->getClayBank() &&
+                 ui->spinBox2->value() == 0 && ui->spinBox3->value() == 0 && ui->spinBox4->value() == 0 && ui->spinBox5->value() == 0))
 
-        else if((ui->spinBox1->value() == 4 || ui->spinBox2->value() == 4 || ui->spinBox3->value() == 4
-                 || ui->spinBox4->value() == 4 || ui->spinBox5->value() == 4) && sumOfRecievedCards != 1)
         {
             QMessageBox::warning(this, tr("Warning"),
-                tr("You have to give 4 cards to the bank and receive one card in return!"));
+                tr("You have to exchange \"%1\" brick with bank and receive one card in return!" ).arg(players[playerId]->getClayBank()));
         }
+        else if(ui->checkBox4->isChecked() == true && sumOfRecievedCards ==1 &&
+                (ui->spinBox1->value() != players[playerId]->getClayBank() &&
+                 ui->spinBox2->value() == 0 && ui->spinBox3->value() == 0 && ui->spinBox4->value() == 0 && ui->spinBox5->value() == 0))
 
-
-        else if(ui->checkBox4->isChecked() == true && sumOfRecievedCards ==1 && sumOfGivenCards!=4)
         {
             QMessageBox::warning(this, tr("Warning"),
-                tr("You must have 4 cards to exchange with bank!"));
+                tr("You have to exchange \"%1\" brick with bank!" ).arg(players[playerId]->getClayBank()));
+        }
+        else if(ui->checkBox4->isChecked() == true && sumOfRecievedCards !=1 &&
+                (ui->spinBox2->value() == players[playerId]->getFieldBank() &&
+                 ui->spinBox1->value() == 0 && ui->spinBox3->value() == 0 && ui->spinBox4->value() == 0 && ui->spinBox5->value() == 0))
+
+        {
+            QMessageBox::warning(this, tr("Warning"),
+                tr("You have to exchange \"%1\" wheat with bank and receive one card in return!" ).arg(players[playerId]->getFieldBank()));
+       }
+        else if(ui->checkBox4->isChecked() == true && sumOfRecievedCards ==1 &&
+                (ui->spinBox2->value() != players[playerId]->getFieldBank() &&
+                 ui->spinBox1->value() == 0 && ui->spinBox3->value() == 0 && ui->spinBox4->value() == 0 && ui->spinBox5->value() == 0))
+
+        {
+            QMessageBox::warning(this, tr("Warning"),
+                tr("You have to exchange \"%1\" wheat with bank!" ).arg(players[playerId]->getFieldBank()));
+       }
+        else if(ui->checkBox4->isChecked() == true && sumOfRecievedCards !=1 &&
+                (ui->spinBox3->value() == players[playerId]->getForestBank()) &&
+                 ui->spinBox1->value() == 0 && ui->spinBox2->value() == 0 &&
+                    ui->spinBox4->value() == 0 && ui->spinBox5->value() == 0)
+
+        {
+            QMessageBox::warning(this, tr("Warning"),
+                tr("You have to exchange \"%1\" wood with bank and receive one card in return!" ).arg(players[playerId]->getForestBank()));
+        }
+        else if(ui->checkBox4->isChecked() == true && sumOfRecievedCards ==1 &&
+                (ui->spinBox3->value() != players[playerId]->getForestBank()) &&
+                 ui->spinBox1->value() == 0 && ui->spinBox2->value() == 0 &&
+                    ui->spinBox4->value() == 0 && ui->spinBox5->value() == 0)
+
+        {
+            QMessageBox::warning(this, tr("Warning"),
+                tr("You have to exchange \"%1\" wood with bank!" ).arg(players[playerId]->getForestBank()));
+        }
+        else if(ui->checkBox4->isChecked() == true && sumOfRecievedCards !=1 &&
+                (ui->spinBox4->value() == players[playerId]->getStoneBank()) &&
+                 ui->spinBox1->value() == 0 && ui->spinBox2->value() == 0 &&
+                ui->spinBox3->value() == 0 && ui->spinBox5->value() == 0)
+
+        {
+            QMessageBox::warning(this, tr("Warning"),
+                tr("You have to exchange \"%1\" ore with bank and receive one card in return!" ).arg(players[playerId]->getStoneBank()));
+        }
+        else if(ui->checkBox4->isChecked() == true && sumOfRecievedCards ==1 &&
+                (ui->spinBox4->value() != players[playerId]->getStoneBank()) &&
+                 ui->spinBox1->value() == 0 && ui->spinBox2->value() == 0 &&
+                ui->spinBox3->value() == 0 && ui->spinBox5->value() == 0)
+
+        {
+            QMessageBox::warning(this, tr("Warning"),
+                tr("You have to exchange \"%1\" ore with bank!" ).arg(players[playerId]->getStoneBank()));
+        }
+        else if(ui->checkBox4->isChecked() == true && sumOfRecievedCards !=1 &&
+                (ui->spinBox5->value() == players[playerId]->getPastureBank()) &&
+                 ui->spinBox1->value() == 0 && ui->spinBox2->value() == 0 &&
+                ui->spinBox3->value() == 0 && ui->spinBox4->value() == 0)
+
+        {
+            QMessageBox::warning(this, tr("Warning"),
+                tr("You have to exchange \"%1\" sheep with bank and receive one card in return!" ).arg(players[playerId]->getPastureBank()));
+        }
+        else if(ui->checkBox4->isChecked() == true && sumOfRecievedCards ==1 &&
+                (ui->spinBox5->value() != players[playerId]->getPastureBank()) &&
+                 ui->spinBox1->value() == 0 && ui->spinBox2->value() == 0 &&
+                ui->spinBox3->value() == 0 && ui->spinBox4->value() == 0)
+
+        {
+            QMessageBox::warning(this, tr("Warning"),
+                tr("You have to exchange \"%1\" sheep with bank!" ).arg(players[playerId]->getPastureBank()));
         }
 
 
