@@ -17,55 +17,55 @@ Player::Player(QString _name,Bank* _bank, Map* _map,QWidget *parent) :
     ui->roadBuilding->setEnabled(false);
     update();
 
-    QPixmap pixmap("/Users/macbook/Desktop/images/resource cards/brick1.jpg");
+    QPixmap pixmap("/brick1.jpg");
     QIcon ButtonIcon(pixmap);
     setIconForPushButton(pixmap, ButtonIcon, ui->clay);
 
-    QPixmap pixmap2("/Users/macbook/Desktop/images/resource cards/grain1.jpg");
+    QPixmap pixmap2("/grain1.jpg");
     QIcon ButtonIcon2(pixmap2);
     setIconForPushButton(pixmap2, ButtonIcon2, ui->field);
 
-    QPixmap pixmap3("/Users/macbook/Desktop/images/resource cards/lumber1.jpg");
+    QPixmap pixmap3("/lumber1.jpg");
     QIcon ButtonIcon3(pixmap3);
     setIconForPushButton(pixmap3, ButtonIcon3, ui->forest);
 
-    QPixmap pixmap4("/Users/macbook/Desktop/images/resource cards/ore1.jpg");
+    QPixmap pixmap4("/ore1.jpg");
     QIcon ButtonIcon4(pixmap4);
     setIconForPushButton(pixmap4, ButtonIcon4, ui->stone);
 
-    QPixmap pixmap5("/Users/macbook/Desktop/images/resource cards/wool1.jpg");
+    QPixmap pixmap5("/wool1.jpg");
     QIcon ButtonIcon5(pixmap5);
     setIconForPushButton(pixmap5, ButtonIcon5, ui->pasture);
 
-    QPixmap pixmap6("/Users/macbook/Desktop/images/development cards/knight.jpg");
+    QPixmap pixmap6("/knight.jpg");
     QIcon ButtonIcon6(pixmap6);
     setIconForPushButton(pixmap6, ButtonIcon6, ui->knight);
 
-    QPixmap pixmap7("/Users/macbook/Desktop/images/development cards/monopoly.jpg");
+    QPixmap pixmap7("/monopoly.jpg");
     QIcon ButtonIcon7(pixmap7);
     setIconForPushButton(pixmap7, ButtonIcon7, ui->monopoly);
 
-    QPixmap pixmap8("/Users/macbook/Desktop/images/development cards/road_building.jpg");
+    QPixmap pixmap8("/road_building.jpg");
     QIcon ButtonIcon8(pixmap8);
     setIconForPushButton(pixmap8, ButtonIcon8, ui->roadBuilding);
 
-    QPixmap pixmap9("/Users/macbook/Desktop/images/development cards/year_of_plenty.jpg");
+    QPixmap pixmap9("/year_of_plenty.jpg");
     QIcon ButtonIcon9(pixmap9);
     setIconForPushButton(pixmap9, ButtonIcon9, ui->yearOfPlenty);
 
-    QPixmap pixmap10("/Users/macbook/Desktop/images/development cards/victory_point.jpg");
+    QPixmap pixmap10("/victory_point.jpg");
     QIcon ButtonIcon10(pixmap10);
     setIconForPushButton(pixmap10, ButtonIcon10, ui->victoryPoint);
 
-    QPixmap pixmap13("/Users/macbook/Desktop/images/piecesIcon/theHouse.jpg");
+    QPixmap pixmap13("/theHouse.jpg");
     QIcon ButtonIcon13(pixmap13);
     setIconForPushButton(pixmap13, ButtonIcon13, ui->settlement);
 
-    QPixmap pixmap14("/Users/macbook/Desktop/images/piecesIcon/theCity.jpg");
+    QPixmap pixmap14("/theCity.jpg");
     QIcon ButtonIcon14(pixmap14);
     setIconForPushButton(pixmap14, ButtonIcon14, ui->city);
 
-    QPixmap pixmap15("/Users/macbook/Desktop/images/piecesIcon/theRoad.jpg");
+    QPixmap pixmap15("/theRoad.jpg");
     QIcon ButtonIcon15(pixmap15);
     setIconForPushButton(pixmap15, ButtonIcon15, ui->road);
 
@@ -148,7 +148,7 @@ bool Player::buyRoad(){
     if(clayCard && forestCard){
         return true;
     }
- //   QMessageBox::warning(this, tr("warning"), tr("you can't buy a road"));
+
     return false;
 }
 
@@ -166,14 +166,7 @@ void Player::addSettlement(QPushButton* p){
     }
     if(settlementPiece == 4){
         QVector<Tile*> tiles = map->getTiles();
-//        for(int i=0;i<settlements.size();i++){
-//            if(abs((tile->getLocation()->x()+65) - (settlements[i]->x()+10) ) < 100 &&
-//                    abs((tile->getLocation()->y()+75) - (settlements[i]->y()+12) ) < 100 ){
-//                n++;
-
-//            }
-//        }
-        for(int i=0 ; i<map->getTiles().size() ; i++){
+  for(int i=0 ; i<map->getTiles().size() ; i++){
             qDebug() << tiles[i]->getLocation()->x() << "  " << tiles[i]->getLocation()->y() ;
             qDebug() << p->x() << "  " << p->y() << "\n\n";
             if( abs((tiles[i]->getLocation()->x()+65) - (p->x()+10)) < 100 &&
