@@ -1,25 +1,25 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
-#include <QWidget>
-#include "board.h"
+#include <QMainWindow>
 
 namespace Ui {
-class Login;
+class login;
 }
 
-class Login : public QWidget
+class login : public QMainWindow
 {
     Q_OBJECT
 
 public:
-     Login(QWidget *parent = nullptr);
-    ~Login();
+     login(QWidget *parent = nullptr);
+      Ui::login *ui;
+    ~login();
 public slots:
-     void openBoard();
+     void startGame();
 
 private:
-    Ui::Login *ui;
+
 };
 
 #endif // LOGIN_H
