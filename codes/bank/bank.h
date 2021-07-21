@@ -24,7 +24,7 @@ public:
     void cityBought();
     bool checkNumDev(int n);
     bool checkNumRes(int n);
-//    void giveCardFirtTime(Player* p,Tile t);
+    ~Bank();
 
 private:
     Map* map;
