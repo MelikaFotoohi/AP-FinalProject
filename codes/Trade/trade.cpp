@@ -4,26 +4,81 @@
 Trade::Trade(Bank* _bank,QVector<Player*> _players, int id,Map* _map,QWidget *parent) : QMainWindow(parent), ui(new Ui::Trade)
 {
     ui->setupUi(this);
+
+    QPixmap bkgnd(":/new/prefix1/backgrounds/3.jpg");
+    bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette palette;
+    palette.setBrush(QPalette::Window, bkgnd);
+    this->setPalette(palette);
+    setFixedSize( 615 , 435);
+
+
     map = _map;
     players = _players;
     playerId = id;
     bank = _bank;
 
     ui->label_11->setText(players[playerId]->getName());
+    ui->label_66->setPixmap(players[playerId]->getPhoto());
+    ui->label_66->setMask(players[playerId]->getPhoto().mask());
+
     QVector<QCheckBox*> playersName {ui->checkBox1,ui->checkBox2,ui->checkBox3};
+    QVector<QLabel*> playersPhoto {ui->label_61 , ui->label_62 , ui->label_63};
     for(int i=0,j=0;i<players.size();i++){
         if(i!=id){
             playersName[j]->setText(players[i]->getName());
+            playersPhoto[j]->setPixmap(players[j]->getPhoto());
+            playersPhoto[j]->setMask(players[j]->getPhoto().mask());
             j++;
         }
     }
-    connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(waitForCheckingConditions()));
+
+
+    QPixmap pixmap_bank(":/new/prefix1/icons/bank4.jpg");
+    QPixmap pixmap_field(":/new/prefix1/cut/grain.jpg");
+    QPixmap pixmap_clay(":/new/prefix1/cut/brick2.jpg");
+    QPixmap pixmap_forest(":/new/prefix1/cut/lumber.jpg");
+    QPixmap pixmap_stone(":/new/prefix1/cut/ors.jpg");
+    QPixmap pixmap_pasture(":/new/prefix1/cut/wool.jpg");
+
+    ui->label_64->setPixmap(pixmap_bank);
+    ui->label_64->setMask(pixmap_bank.mask());
+    ui->label5->setPixmap(pixmap_clay);
+    ui->label5->setMask(pixmap_clay.mask());
+    ui->label6->setPixmap(pixmap_field);
+    ui->label6->setMask(pixmap_field.mask());
+    ui->label7->setPixmap(pixmap_forest);
+    ui->label7->setMask(pixmap_forest.mask());
+    ui->label8->setPixmap(pixmap_stone);
+    ui->label8->setMask(pixmap_stone.mask());
+    ui->label9->setPixmap(pixmap_pasture);
+    ui->label9->setMask(pixmap_pasture.mask());
+
+    ui->label13->setPixmap(pixmap_clay);
+    ui->label13->setMask(pixmap_clay.mask());
+    ui->label14->setPixmap(pixmap_field);
+    ui->label14->setMask(pixmap_field.mask());
+    ui->label15->setPixmap(pixmap_forest);
+    ui->label15->setMask(pixmap_forest.mask());
+    ui->label16->setPixmap(pixmap_stone);
+    ui->label16->setMask(pixmap_stone.mask());
+    ui->label17->setPixmap(pixmap_pasture);
+    ui->label17->setMask(pixmap_pasture.mask());
+
+
+
+
+
+
+
+    connect(ui->request, SIGNAL(clicked()), this, SLOT(waitForCheckingConditions()));
+    connect(ui->back, SIGNAL(clicked()), this, SLOT(backToPlayer()));
+}
+void Trade::backToPlayer(){
+    this->close();
 }
 
-Trade::~Trade()
-{
-    delete ui;
-}
+
 
 void Trade::setIconForPushButton(QPixmap pix, QIcon icon, QPushButton* button)
 {
@@ -41,7 +96,6 @@ int Trade::givePlayerId(QString name){
 void Trade::TradeRequest(bool back)
 {
     if(back){
-        players[playerId]->show();
         this->close();
     }
 
@@ -64,7 +118,6 @@ void Trade::TradeRequest(bool back)
         }
     }
     if(cantExchange){
-        players[playerId]->show();
         this->close();
     }
 
@@ -81,7 +134,6 @@ void Trade::TradeRequest(bool back)
                 players[playerId]->getResourceCard(cards[i].first);
             }
         }
-        players[playerId]->show();
         this->close();
     }
     QVector<QPair<tileType,int>> p2Cards {{clay,ui->spinBox6->value()},{field,ui->spinBox7->value()},
@@ -95,7 +147,7 @@ void Trade::TradeRequest(bool back)
     if(ui->checkBox3->isChecked() && players[givePlayerId(ui->checkBox3->text())]->checkRequset(p2Cards))
         players[givePlayerId(ui->checkBox3->text())]->showRequest(cards,players[playerId]);
 
-    players[playerId]->show();
+
     this->close();
 }
 
@@ -240,5 +292,10 @@ void Trade::waitForCheckingConditions()
         }
 
         else TradeRequest(0);
+}
+
+Trade::~Trade()
+{
+    delete ui;
 }
 
