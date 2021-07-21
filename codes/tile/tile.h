@@ -2,22 +2,27 @@
 #define TILE_H
 
 #include <QWidget>
+#include <QPushButton>
+#include <QLabel>
 #include "resourcecard.h"
 #include "location.h"
+
 enum tileType { field, stone, clay, pasture, forest, desert};
+
 class Tile : public QWidget
 {
     Q_OBJECT
 public:
-    Tile(tileType, int, Location*);
+    Tile(tileType, int, QLabel*);
     ResourceCard getResource();
-    Location* getLocation();
+    QLabel* getLocation();
     tileType getType();
-    void getRobber();
+    int getToken();
+    void changeRobber(bool);
     bool checkRobber();
 
 private:
-    Location* location;
+    QLabel* location;
     ResourceCard resource();
     int numberToken;
     tileType type;
