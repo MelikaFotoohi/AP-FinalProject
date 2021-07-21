@@ -9,10 +9,10 @@ int Game::player_ = 0;
 int Game::count = 0;
 
 Game::Game(QWidget *parent) :
-    QMainWindow(parent)
+    QTcpServer(parent)
 {
     map = new Map();
-    map->show();
+//    map->show();
 
     bank = new Bank(map);
 
@@ -66,11 +66,32 @@ Game::Game(QWidget *parent) :
 }
 
 void Game::goToLogin(int i){
-    players[i]->setName(logins[i]->ui->led_username->text());
+    if(logins[i]->ui->led_username->text()!="")
+          players[i]->setName(logins[i]->ui->led_username->text());
+    if(i==0)
+    {
+        player1->setWindowTitle(players[i]->getName());
+        map->ui->label_31->setText(players[i]->getName());
+    }
+    if(i==1)
+    {
+        player2->setWindowTitle(players[i]->getName());
+        map->ui->label_32->setText(players[i]->getName());
+    }
+    if(i==2){
+        player3->setWindowTitle(players[i]->getName());
+        map->ui->label_33->setText(players[i]->getName());
+    }
+    if(i==3){
+        player4->setWindowTitle(players[i]->getName());
+        map->ui->label_34->setText(players[i]->getName());
+    }
     logins[i]->close();
     players[i]->show();
     if(i!=0)
         players[i]->enablePushButtons(false);
+    if(i==3)
+        map->show();
 }
 
 void Game::gotoRoll(){
@@ -221,13 +242,13 @@ void Game::slectedSetllement(QObject* p){
     else if(player2->buySettlement() && player_ == 1){
         QPixmap pixmap_home(":/new/prefix1/pieces/green_settlement.png");
         setColorForSettlements(player2, pixmap_home, house);
-        if(count == 1)
+        if(count == 1 || count == 5)
                    player1->ui->settlement->setDisabled(true);
     }
     else if(player3->buySettlement() &&player_ == 2){
         QPixmap pixmap_home(":/new/prefix1/pieces/red_settlement.png");
         setColorForSettlements(player3, pixmap_home, house);
-        if(count == 2)
+        if(count == 2 || count == 6)
                    player3->ui->settlement->setDisabled(true);
     }
     else if(player4->buySettlement() && player_ == 3){
@@ -271,14 +292,14 @@ void Game::slectedRoad(QObject* p){
     else if(player2->buyRoad() && player_ == 1){
         road->setStyleSheet("background-color:rgb(28,137,66)");
         setColorForRoads(player2,  road);
-        if(count == 1)
+        if(count == 1 || count == 5)
                    player2->ui->settlement->setDisabled(true);
 
     }
     else if(player3->buyRoad() && player_ == 2){
         road->setStyleSheet("background-color:rgb(255,0,0)");
         setColorForRoads(player3, road);
-        if(count == 2)
+        if(count == 2 || count == 6)
                    player3->ui->settlement->setDisabled(true);
     }
     else if(player4->buyRoad() && player_ == 3){
@@ -299,8 +320,37 @@ void Game::tradeConnect(int i){
 
 void Game::goToTradeWindow(int i)
 {
-    Trade *trade = new Trade(bank,players,i,map);
-    trade->show();
+    QJsonArray a;
+    QJsonObject p1,p2,p3,p4;
+    p1["name"] = player1->getName();
+    p1["id"] = 0;
+    p2["name"] = player2->getName();
+    p2["id"] = 1;
+    p3["name"] = player3->getName();
+    p3["id"] = 2;
+    p4["name"] = player4->getName();
+    p4["id"] = 3;
+    a.append(p1);
+    a.append(p2);
+    a.append(p3);
+    a.append(p4);
+    a.append(i);
+    a.append(players[i]->getClayBank());
+    a.append(players[i]->getFieldBank());
+    a.append(players[i]->getForestBank());
+    a.append(players[i]->getStoneBank());
+    a.append(players[i]->getPastureBank());
+    a.append(players[i]->getCardsNum()[0].second);
+    a.append(players[i]->getCardsNum()[1].second);
+    a.append(players[i]->getCardsNum()[2].second);
+    a.append(players[i]->getCardsNum()[3].second);
+    a.append(players[i]->getCardsNum()[4].second);
+
+    QJsonDocument d(a);
+    QFile f("/Users/macbook/Desktop/1.json");
+    f.open(QIODevice::WriteOnly);
+    f.write(d.toJson());
+    emit write(d.toJson());
 }
 
 void Game::getDevelopment(){
@@ -380,6 +430,14 @@ void Game::playerTurn(){
     player2->enablePushButtons(false);
     player3->enablePushButtons(false);
     player4->enablePushButtons(false);
+    if(player_==0)
+        map->ui->label_39->setText(QString::number(player1->getTotalPoint()));
+    if(player_==1)
+        map->ui->label_40->setText(QString::number(player2->getTotalPoint()));
+    if(player_==2)
+        map->ui->label_41->setText(QString::number(player3->getTotalPoint()));
+    if(player_==3)
+        map->ui->label_42->setText(QString::number(player4->getTotalPoint()));
     if(count < 4){
     if(player_ == 0){
         player_ = 1;
@@ -523,6 +581,72 @@ void Game::showWinner(){
    w->showWinners(players_score);
 }
 
+void Game::incomingConnection(qintptr socketDescriptor)
+{
+    qDebug() << socketDescriptor << " Connecting...";
+    Worker *worker=new Worker(socketDescriptor);
+    QThread *workerThread=new QThread;
+    workerThreads.append(workerThread);
+    worker->moveToThread(workerThread);
+    connect(workerThread, &QThread::finished, worker, &QObject::deleteLater);
+    connect(this,SIGNAL(write(QByteArray)),worker,SLOT(writeToSocket(QByteArray)));
+    connect(worker,SIGNAL(readFromSocket(QJsonDocument,qintptr)),this,SLOT(read(QJsonDocument,qintptr)));
+    connect(this, &Game::run, worker, &Worker::start);
+    workerThread->start();
+    emit run();
+}
+
+void Game::startServer()
+{  int port = 9000;
+    if (!this->listen(QHostAddress::Any, port)) {
+      qDebug() << "Could not start server";
+    } else {
+      qDebug() << "Listening to port " << port << "...";
+    }
+}
+
+int Game::givePlayerId(QString name){
+    for(int i=0;i<players.size();i++){
+        if(name == players[i]->getName())
+            return i;
+    }
+}
+void Game::read(QJsonDocument a, qintptr descriptor)
+{
+    QVector<int> toWho {a[0].toBool(),a[1].toBool(),a[2].toBool(),a[3].toBool()};
+    QVector<QPair<tileType,QPair<int,int>>> cards {
+        {clay,{a[4].toInt(),a[9].toInt()}},
+        {field,{a[5].toInt(),a[10].toInt()}},
+        {forest,{a[6].toInt(),a[11].toInt()}},
+        {stone,{a[7].toInt(),a[12].toInt()}},
+        {pasture,{a[8].toInt(),a[13].toInt()}} };
+    int playerId = a[14].toInt();
+        if(toWho[3]){
+            for(int i=0;i<cards.size();i++){
+                if(cards[i].second.first != 0){
+                    for(int j=0;j<cards[i].second.first;j++){
+                        bank->getCardFromPlayer(cards[i].first);
+                        players[playerId]->giveResourceCard(cards[i].first);
+                    }
+                }
+                if(cards[i].second.second == 1){
+                    bank->giveResCardToPlayer(cards[i].first);
+                    players[playerId]->getResourceCard(cards[i].first);
+                }
+            }
+        }
+        QVector<QPair<tileType,int>> p2Cards {{clay,a[9].toInt()},{field,a[10].toInt()},
+            {forest,a[11].toInt()},{stone,a[12].toInt()},{pasture,a[13].toInt()}};
+
+        if(toWho[0] && players[givePlayerId(a[15].toString())]->checkRequset(p2Cards))
+            players[givePlayerId(a[15].toString())]->showRequest(cards,players[playerId]);
+
+        if(toWho[1] && players[givePlayerId(a[16].toString())]->checkRequset(p2Cards))
+            players[givePlayerId(a[16].toString())]->showRequest(cards,players[playerId]);
+
+        if(toWho[2] && players[givePlayerId(a[17].toString())]->checkRequset(p2Cards))
+            players[givePlayerId(a[17].toString())]->showRequest(cards,players[playerId]);
+}
 Game::~Game(){
     delete map;
     delete bank;
@@ -531,4 +655,9 @@ Game::~Game(){
     delete player2;
     delete player3;
     delete player4;
+    for(auto &workerThread:workerThreads){
+        workerThread->quit();
+        workerThread->wait();
+        delete workerThread;
+    }
 }
