@@ -10,25 +10,45 @@ a simple, multiplayer Settlers of Catan made by QtCreator.
 * Parto Sabzevari
 * Golnoush Nematbakhsh
 
+## Rulebooks
+* here is a Persian rulebook of catan that might be helpful for you :  [AP_project_00.pdf](https://github.com/MelikaFotoohi/AP-FinalProject/files/6720639/AP_project_00.pdf)
+* Also for more information about rules and conditions you can read this file :  [catan rulebook.pdf](https://github.com/MelikaFotoohi/AP-FinalProject/files/6842558/catan.rulebook.pdf)
+
 ## Different parts of Game
 
+### Login
+![login](https://user-images.githubusercontent.com/80758012/126529370-e77aad90-4d60-4c93-8f9b-ca3058054a9e.jpg)
+
+
+> Players can choose a name and usename and enter to the game.
+----
+
 ### Board game
-![map](https://user-images.githubusercontent.com/80758012/126201728-574d2d60-e827-4628-954a-0cb176d19003.png)
+![map](https://user-images.githubusercontent.com/80758012/126528798-d217a215-fa5a-4ae7-bb80-ab113abf9693.jpg)
 
 
-> Resource tiles, buildings, dices and turn if players are shown in this part.
+> Resource tiles, buildings, dices, turn of players and their victory points are shown in this part.
 ----
 
 ### Player's window
-![player](https://user-images.githubusercontent.com/80758012/126201749-a142560e-10fa-477e-8379-f9f4d2141273.jpg)
+![player](https://user-images.githubusercontent.com/80758012/126528857-3ac23d3a-7997-456c-af0d-eaaf62389f2d.jpg)
+
 
 > Every player has such window, you can find resource cards, development cards, player username and photo, trade and turn button and buildings here.
 ----- 
 
 ### Trade window
-![trade](https://user-images.githubusercontent.com/80758012/126201764-7ad48f33-70c1-4a54-a8bb-4e1b23770ce0.jpg)
+![trade](https://user-images.githubusercontent.com/80758012/126528886-96205ec3-bc3d-4228-9277-1e6192d01500.jpg)
+
 
 > In this part players choose cards and players who they want to change card with, and send a trade request to them.
+-----
+
+### Request window
+![request](https://user-images.githubusercontent.com/80758012/126528993-ef1e6f30-455b-4a26-91cb-e67f6ec0d430.jpg)
+
+
+> In this window you can see the sender and reciever of request and cards they want to trade.
 -----
 
 ### Winners part
@@ -169,5 +189,4 @@ The aim of Catan is simple: the first player to 10 victory points on their turn 
 
 Make sure to keep count of your victory points (and your opponents’!) throughout the game by keeping track of buildings and any Longest Road/Largest Army bonuses.
 
-* here is a Persian rulebook of catan that might be helpful for you :  [AP_project_00.pdf](https://github.com/MelikaFotoohi/AP-FinalProject/files/6720639/AP_project_00.pdf)
-* Also for more information about rules and conditions you can read this file :  [catan rulebook.pdf](https://github.com/MelikaFotoohi/AP-FinalProject/files/6842558/catan.rulebook.pdf)
+----
