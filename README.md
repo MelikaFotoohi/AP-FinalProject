@@ -17,35 +17,35 @@ a simple, multiplayer Settlers of Catan made by QtCreator.
 ## Different parts of Game
 
 ### Login
-![login](https://user-images.githubusercontent.com/80758012/126529370-e77aad90-4d60-4c93-8f9b-ca3058054a9e.jpg)
+![login](https://user-images.githubusercontent.com/80758012/126533397-73cff9d7-f6ca-4397-9a57-2865a5ebf890.jpg)
 
 
 > Players can choose a name and usename and enter to the game.
 ----
 
 ### Board game
-![map](https://user-images.githubusercontent.com/80758012/126528798-d217a215-fa5a-4ae7-bb80-ab113abf9693.jpg)
+![map](https://user-images.githubusercontent.com/80758012/126533415-dfe3ad08-e25c-43de-a92e-951a4029b40c.jpg)
 
 
 > Resource tiles, buildings, dices, turn of players and their victory points are shown in this part.
 ----
 
 ### Player's window
-![player](https://user-images.githubusercontent.com/80758012/126528857-3ac23d3a-7997-456c-af0d-eaaf62389f2d.jpg)
+![player](https://user-images.githubusercontent.com/80758012/126533433-c2d1d12b-8adc-41ab-87d7-e3745ba0775e.jpg)
 
 
 > Every player has such window, you can find resource cards, development cards, player username and photo, trade and turn button and buildings here.
 ----- 
 
 ### Trade window
-![trade](https://user-images.githubusercontent.com/80758012/126528886-96205ec3-bc3d-4228-9277-1e6192d01500.jpg)
+![trade](https://user-images.githubusercontent.com/80758012/126533453-877513ed-9091-4b86-87b7-d6832a20c051.jpg)
 
 
 > In this part players choose cards and players who they want to change card with, and send a trade request to them.
 -----
 
 ### Request window
-![request](https://user-images.githubusercontent.com/80758012/126528993-ef1e6f30-455b-4a26-91cb-e67f6ec0d430.jpg)
+![request](https://user-images.githubusercontent.com/80758012/126533481-8dad4340-f17f-48fd-b87b-85efacadab9a.jpg)
 
 
 > In this window you can see the sender and reciever of request and cards they want to trade.
