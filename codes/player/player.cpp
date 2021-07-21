@@ -1,9 +1,10 @@
 #include "player.h"
 #include "ui_Player.h"
+#include "ui_map.h"
 #include "request.h"
 #include "bank.h"
 
-Player::Player(QString _name,Bank* _bank, Map* _map,QWidget *parent) :
+Player::Player(QPixmap pix , QString _name,Bank* _bank, Map* _map,QWidget *parent) :
     QMainWindow(parent)
     ,ui(new Ui::Player)
 {
@@ -11,63 +12,83 @@ Player::Player(QString _name,Bank* _bank, Map* _map,QWidget *parent) :
     map = _map;
     name = _name;
     bank = _bank;
+    player_photo = pix;
 
-    ui->victoryPoint->setEnabled(false);
-    ui->knight->setEnabled(false);
-    ui->roadBuilding->setEnabled(false);
+    ui->roll->setEnabled(false);
+
+
+    QPixmap bkgnd(":/new/prefix1/backgrounds/4.jpg");
+    bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette palette;
+    palette.setBrush(QPalette::Window, bkgnd);
+    this->setPalette(palette);
+    setFixedSize(650 , 400);
     update();
 
-    QPixmap pixmap("/brick1.jpg");
+
+    ui->playerPhotoLabel->setPixmap(pix);
+    ui->playerPhotoLabel->setMask(pix.mask());
+
+    QPixmap pixmap(":/new/prefix1/cards/rc_brick.jpg");
     QIcon ButtonIcon(pixmap);
     setIconForPushButton(pixmap, ButtonIcon, ui->clay);
 
-    QPixmap pixmap2("/grain1.jpg");
+    QPixmap pixmap2(":/new/prefix1/cards/rc_grain.jpg");
     QIcon ButtonIcon2(pixmap2);
     setIconForPushButton(pixmap2, ButtonIcon2, ui->field);
 
-    QPixmap pixmap3("/lumber1.jpg");
+    QPixmap pixmap3(":/new/prefix1/cards/rc_lumber.jpg");
     QIcon ButtonIcon3(pixmap3);
     setIconForPushButton(pixmap3, ButtonIcon3, ui->forest);
 
-    QPixmap pixmap4("/ore1.jpg");
+    QPixmap pixmap4(":/new/prefix1/cards/rc_ore.jpg");
     QIcon ButtonIcon4(pixmap4);
     setIconForPushButton(pixmap4, ButtonIcon4, ui->stone);
 
-    QPixmap pixmap5("/wool1.jpg");
+    QPixmap pixmap5(":/new/prefix1/cards/rc_wool.jpg");
     QIcon ButtonIcon5(pixmap5);
     setIconForPushButton(pixmap5, ButtonIcon5, ui->pasture);
 
-    QPixmap pixmap6("/knight.jpg");
+    QPixmap pixmap6(":/new/prefix1/cards/dev_knight.jpg");
     QIcon ButtonIcon6(pixmap6);
     setIconForPushButton(pixmap6, ButtonIcon6, ui->knight);
 
-    QPixmap pixmap7("/monopoly.jpg");
+    QPixmap pixmap7(":/new/prefix1/cards/dev_monopoly.jpg");
     QIcon ButtonIcon7(pixmap7);
     setIconForPushButton(pixmap7, ButtonIcon7, ui->monopoly);
 
-    QPixmap pixmap8("/road_building.jpg");
+    QPixmap pixmap8(":/new/prefix1/icons/icon_buyDevCard.jpg");
     QIcon ButtonIcon8(pixmap8);
-    setIconForPushButton(pixmap8, ButtonIcon8, ui->roadBuilding);
+    setIconForPushButton(pixmap8, ButtonIcon8, ui->development);
 
-    QPixmap pixmap9("/year_of_plenty.jpg");
+    QPixmap pixmap9(":/new/prefix1/cards/dev_yearOfPlenty.jpg");
     QIcon ButtonIcon9(pixmap9);
     setIconForPushButton(pixmap9, ButtonIcon9, ui->yearOfPlenty);
 
-    QPixmap pixmap10("/victory_point.jpg");
+    QPixmap pixmap10(":/new/prefix1/cards/dev_victoryPoint.jpg");
     QIcon ButtonIcon10(pixmap10);
     setIconForPushButton(pixmap10, ButtonIcon10, ui->victoryPoint);
 
-    QPixmap pixmap13("/theHouse.jpg");
+    QPixmap pixmap13(":/new/prefix1/icons/theHousee.jpg");
     QIcon ButtonIcon13(pixmap13);
     setIconForPushButton(pixmap13, ButtonIcon13, ui->settlement);
 
-    QPixmap pixmap14("/theCity.jpg");
+    QPixmap pixmap14(":/new/prefix1/icons/theCity.jpg");
     QIcon ButtonIcon14(pixmap14);
     setIconForPushButton(pixmap14, ButtonIcon14, ui->city);
 
-    QPixmap pixmap15("/theRoad.jpg");
+    QPixmap pixmap15(":/new/prefix1/icons/theRoad.jpg");
     QIcon ButtonIcon15(pixmap15);
     setIconForPushButton(pixmap15, ButtonIcon15, ui->road);
+
+    QPixmap pixmap16(":/new/prefix1/cards/dev_largestArmy.jpeg");
+    QIcon ButtonIcon16(pixmap16);
+    setIconForPushButton(pixmap16, ButtonIcon16, ui->largestArmy);
+
+    QPixmap logo(":/new/prefix1/backgrounds/catan-logo-small.png");
+    ui->label_4->setPixmap(logo);
+    ui->label_4->setMask(logo.mask());
+
 
     connect(ui->road, SIGNAL(clicked()), this, SLOT(showRoads()));
     connect(ui->settlement, SIGNAL(clicked()), this, SLOT(showSetllement()));
@@ -81,6 +102,7 @@ void Player::setName(QString _name){
 }
 
 void Player::update(){
+    QVector<QLabel*>points{map->ui->label_39 , map->ui->label_40 , map->ui->label_41 , map->ui->label_42};
     if(monopolyCard<1){
         ui->monopoly->setEnabled(false);
     }else
@@ -99,6 +121,11 @@ void Player::update(){
         stoneCard = 0;
     if(fieldCard < 0)
         fieldCard = 0;
+    if(largestArmy)
+        ui->largestArmyNum->setText("1");
+    else
+        ui->largestArmyNum->setText("0");
+
     ui->clayNum->setText(QString::number(clayCard));
     ui->forestNum->setText(QString::number(forestCard));
     ui->pastureNum->setText(QString::number(pastureCard));
@@ -109,11 +136,16 @@ void Player::update(){
     ui->roadNum->setText(QString::number(roadPiece));
     ui->knightNum->setText(QString::number(KnightCard));
     ui->monopolyNum->setText(QString::number(monopolyCard));
-    ui->roadBuildingNum->setText(QString::number(roadBuildingCard));
     ui->victoryPointNum->setText(QString::number(victoryPointCard));
     ui->yearOfPlentyNum->setText(QString::number(yearOfPlentyCard));
+    for(int i = 0; i < points.size(); i++){
+        if(i == PlayerID){
+            points[i]->setText(QString::number(totalPoint));
+        }
+    }
 
 }
+
 int Player::getTotalPoint(){
     return totalPoint;
 }
@@ -132,6 +164,8 @@ bool Player::buyDevelopment(){
 }
 
 bool Player::buySettlement(){
+    if(settlementPiece == 0)
+        return false;
     if(settlementPiece > 3){
         return true;
     }
@@ -142,22 +176,21 @@ bool Player::buySettlement(){
 }
 
 bool Player::buyRoad(){
+    if(roadPiece == 0)
+        return false;
     if(roadPiece > 13){
         return true;
     }
     if(clayCard && forestCard){
         return true;
     }
-
     return false;
 }
-
 
 void Player::addSettlement(QPushButton* p){
     settlements.push_back(p);
     totalPoint++;
     p->setDisabled(true);
-    qDebug() << settlementPiece;
     if(settlementPiece < 4){
         clayCard--;
         forestCard--;
@@ -166,9 +199,7 @@ void Player::addSettlement(QPushButton* p){
     }
     if(settlementPiece == 4){
         QVector<Tile*> tiles = map->getTiles();
-  for(int i=0 ; i<map->getTiles().size() ; i++){
-            qDebug() << tiles[i]->getLocation()->x() << "  " << tiles[i]->getLocation()->y() ;
-            qDebug() << p->x() << "  " << p->y() << "\n\n";
+        for(int i=0 ; i<map->getTiles().size() ; i++){
             if( abs((tiles[i]->getLocation()->x()+65) - (p->x()+10)) < 100 &&
                  abs((tiles[i]->getLocation()->y()+75) - (p->y()+12)) < 100){
               getResourceCard(tiles[i]->getType());
@@ -178,17 +209,18 @@ void Player::addSettlement(QPushButton* p){
     }
     settlementPiece--;
     update();
-    if(map->getPorts()[0].second.first == p || map->getPorts()[0].second.second == p)
+    QVector<QPair<tileType,QPair<QPushButton*,QPushButton*>>> ports =  map->getPorts();
+    if(ports[0].second.first == p || ports[0].second.second == p)
         clayBank = 2;
-    else if(map->getPorts()[1].second.first == p || map->getPorts()[1].second.second == p)
+    else if(ports[1].second.first == p || ports[1].second.second == p)
         pastureBank = 2;
-    else if(map->getPorts()[2].second.first == p || map->getPorts()[2].second.second == p)
+    else if(ports[2].second.first == p || ports[2].second.second == p)
         stoneBank = 2;
-    else if(map->getPorts()[3].second.first == p || map->getPorts()[3].second.second == p)
+    else if(ports[3].second.first == p || ports[3].second.second == p)
         forestBank = 2;
-    else if(map->getPorts()[4].second.first == p || map->getPorts()[4].second.second == p)
+    else if(ports[4].second.first == p || ports[4].second.second == p)
         fieldBank = 2;
-    else if(map->getPorts()[5].second.first == p || map->getPorts()[5].second.second == p){
+    else if(ports[5].second.first == p || ports[5].second.second == p){
         if(clayBank!=2) clayBank = 3;
         if(pastureBank!=2) pastureBank = 3;
         if(stoneBank!=2) stoneBank = 3;
@@ -198,42 +230,47 @@ void Player::addSettlement(QPushButton* p){
     cityCount++;
 }
 
-
 QVector<QPushButton*> Player::getSettlements(){
     return settlements;
 }
 
 bool Player::buyCity(){
-    if(cityCount > 0)
-        return true;
+    if(fieldCard > 1 && stoneCard > 2 && cityCount)
+            return true;
+     else{
+            QMessageBox::warning(this, tr("warning"), tr("you can't buy a city"));
+            return false;
+        }
+    if(cityPiece == 0)
+        return false;
     else{
     QMessageBox::warning(this, tr("warning"), tr("you can't buy a city"));
     return false;
     }
-    if(fieldCard > 1 && stoneCard > 2)
-        return true;
-    else{
-        QMessageBox::warning(this, tr("warning"), tr("there is no settleme in board"));
-        return false;
-    }
+
 }
 
 void Player::updateToCity(QPushButton* p){
-    if(buyCity()){
-    int i=0;
-    for(; i<settlements.size() ;i++){
-        if(settlements[i]==p)
-            break;
+    if(buyCity())
+    {
+        int i=0;
+        for(; i<settlements.size() ;i++){
+            if(settlements[i]==p)
+                break;
+        }
+        settlements.removeAt(i);
+        p->setEnabled(false);
+        cities.push_back(p);
+        cityPiece--;
+        fieldCard-=2;
+        stoneCard-=3;
+        totalPoint++;
+        cityCount--;
+        for(int i=0;i<settlements.size();i++){
+            settlements[i]->setDisabled(true);
+        }
+        update();
     }
-    settlements.removeAt(i);
-    p->setEnabled(false);
-    cities.push_back(p);
-    cityPiece--;
-    fieldCard-=2;
-    stoneCard-=3;
-    totalPoint++;
-    cityCount--;
-    update();}
 }
 
 void Player::addRoad(QPushButton* p){
@@ -270,10 +307,6 @@ void Player::getDevelopmentCard(developmentType dt){
     update();
 }
 
-void Player::changeRobber(){
-
-}
-
 void Player::getResourceCard(tileType t){
     if (t==field){
         fieldCard++;
@@ -291,12 +324,6 @@ void Player::getResourceCard(tileType t){
         forestCard++;
     }
     update();
-    qDebug() << PlayerID << "//////////////////////////";
-    qDebug() << "field card ::" << fieldCard ;
-    qDebug() << "stone card ::" << stoneCard ;
-    qDebug() << "clay card ::" << clayCard ;
-    qDebug() << "pasture card ::" << pastureCard ;
-    qDebug() << "forest card ::" << forestCard ;
 }
 
 void Player::enablePushButtons(bool mode){
@@ -309,7 +336,7 @@ void Player::enablePushButtons(bool mode){
    ui->monopoly->setEnabled(mode);
    ui->yearOfPlenty->setEnabled(mode);
    ui->victoryPoint->setEnabled(mode);
-   ui->roadBuilding->setEnabled(mode);
+   ui->largestArmy->setEnabled(mode);
 
    ui->city->setEnabled(mode);
    ui->settlement->setEnabled(mode);
@@ -321,7 +348,6 @@ void Player::enablePushButtons(bool mode){
 }
 
 void Player::giveResourceCard(tileType t){
-    qDebug() << "player give res" << t;
     if (t==field && fieldCard >= 1){
         fieldCard--;
     }
@@ -405,8 +431,8 @@ void Player::showRoads(){
         }
         for(int i=0;i<settlements.size();i++){
             for(int j=0;j<map->getAvailableEdges().size();j++){
-                if(abs(settlements[i]->x() - map->getAvailableEdges()[j]->x()) < 55 &&
-                        abs(settlements[i]->y() - map->getAvailableEdges()[j]->y()) < 55){
+                if(abs(settlements[i]->x() - map->getAvailableEdges()[j]->x()) < 65 &&
+                        abs(settlements[i]->y() - map->getAvailableEdges()[j]->y()) < 65){
                     map->getAvailableEdges()[j]->setVisible(true);
                 }
             }
@@ -455,14 +481,14 @@ int Player::isAdjacent(Tile* tile){
     int n=0;
     for(int i=0;i<settlements.size();i++){
         if(abs((tile->getLocation()->x()+65) - (settlements[i]->x()+10) ) < 100 &&
-                abs((tile->getLocation()->y()+75) - (settlements[i]->y()+12) ) < 100 ){
+                abs((tile->getLocation()->y()+75) - (settlements[i]->y()+12) ) < 100  && !tile->checkRobber()){
             n++;
 
         }
     }
     for(int i=0;i<cities.size();i++){
         if(abs((tile->getLocation()->x()+65) - (cities[i]->x()+10) ) < 100 &&
-                abs((tile->getLocation()->y()+75) - (cities[i]->y()+12) ) < 100 ){
+                abs((tile->getLocation()->y()+75) - (cities[i]->y()+12) ) < 100 && !tile->checkRobber()){
             n+=2;
         }
     }
@@ -478,6 +504,7 @@ QVector<QPair<tileType,int>> Player::getCardsNum(){
 QString Player::getName(){
     return name;
 }
+
 bool Player::checkRequset(QVector<QPair<tileType,int>> cards){
     if(cards[0].second > clayCard)
         return false;
@@ -491,23 +518,46 @@ bool Player::checkRequset(QVector<QPair<tileType,int>> cards){
         return false;
     return true;
 }
+
 void Player::showRequest(QVector<QPair<tileType,QPair<int,int>>> cards, Player* p){
     Request* requst = new Request(cards,p,this);
     requst->show();
 }
+
+void Player::setLargestArmy(bool mode){
+    if(largestArmy && !mode)
+        totalPoint -= 2;
+    if(!largestArmy && mode)
+        totalPoint += 2;
+
+    largestArmy = mode;
+}
+
 int Player::getClayBank(){
     qDebug() << clayBank;
     return  clayBank;
 }
+
 int Player::getForestBank(){
     return forestBank;
 }
+
 int Player::getStoneBank(){
     return stoneBank;
 }
+
 int Player::getPastureBank(){
     return pastureBank;
 }
+
 int Player::getFieldBank(){
     return fieldBank;
+}
+
+int Player::getKnights(){
+    return KnightCard;
+}
+
+QPixmap Player::getPhoto(){
+    return player_photo;
 }
