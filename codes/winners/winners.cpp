@@ -4,23 +4,25 @@
 winners::winners(QWidget *parent) : QMainWindow(parent) , ui(new Ui::winners)
 {
     ui->setupUi(this);
+    setWindowTitle("Score Board");
 
 
 }
 void winners::showWinners(QVector< QPair<QString , int>> players_score){
     setFixedSize(410  , 500);
-    QPixmap bkgnd("/Users/golnoush/Desktop/University/term 2/AP/AP_project/catan-background_seafarers.jpg");
+    QPixmap bkgnd(":/new/prefix1/backgrounds/catan-background_seafarers.jpg");
     bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Window, bkgnd);
     this->setPalette(palette);
-    QPixmap pixmap_medal1("/Users/golnoush/Desktop/University/term 2/AP/AP_project/first.png");
+
+    QPixmap pixmap_medal1(":/new/prefix1/medal/medal_gold.png");
     ui->medal_1->setPixmap(pixmap_medal1);
     ui->medal_1->setMask(pixmap_medal1.mask());
-    QPixmap pixmap_medal2("/Users/golnoush/Desktop/University/term 2/AP/AP_project/second.png");
+    QPixmap pixmap_medal2(":/new/prefix1/medal/medal_silver.png");
     ui->medal_2->setPixmap(pixmap_medal2);
     ui->medal_2->setMask(pixmap_medal2.mask());
-    QPixmap pixmap_medal3("/Users/golnoush/Desktop/University/term 2/AP/AP_project/third.png");
+    QPixmap pixmap_medal3(":/new/prefix1/medal/medal_bronz.png");
     ui->medal_3->setPixmap(pixmap_medal3);
     ui->medal_3->setMask(pixmap_medal3.mask());
 
