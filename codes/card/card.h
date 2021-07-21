@@ -4,6 +4,10 @@
 #include <QWidget>
 #include <QString>
 
+enum developmentType {victoryPoint, Knight, roadBuilding, yearOfPlenty, monopoly };
+enum resourceType {fieldCard, stoneCard, clayCard, pastureCard, forestCard };
+enum specialType {longestRoadCard, largerstArmyCard };
+
 class Card : public QWidget
 {
     Q_OBJECT
