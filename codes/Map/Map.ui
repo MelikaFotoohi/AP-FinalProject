@@ -1,2454 +1,554 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Map</class>
- <widget class="QMainWindow" name="Map">
+ <class>Player</class>
+ <widget class="QMainWindow" name="Player">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1054</width>
-    <height>823</height>
+    <width>653</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton_67">
+   <widget class="QPushButton" name="turn">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>530</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_143">
-    <property name="geometry">
-     <rect>
-      <x>517</x>
-      <y>630</y>
-      <width>21</width>
+      <x>390</x>
+      <y>360</y>
+      <width>241</width>
       <height>31</height>
      </rect>
     </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_117">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>390</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
+    <property name="styleSheet">
+     <string notr="true">font: 13pt &quot;Andale Mono&quot;;
+color: rgb(209, 0, 0);
+background-color: rgb(255, 205, 55);
+</string>
     </property>
     <property name="text">
-     <string/>
+     <string>End your turn</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../Favorites/Desktop/catan images/trade/next.png</normaloff>../../../Favorites/Desktop/catan images/trade/next.png</iconset>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_44">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>60</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_78">
-    <property name="geometry">
-     <rect>
-      <x>760</x>
-      <y>204</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_31">
-    <property name="geometry">
-     <rect>
-      <x>695</x>
-      <y>380</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_86">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>326</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_57">
-    <property name="geometry">
-     <rect>
-      <x>553</x>
-      <y>379</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_135">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>390</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_10">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>270</y>
-      <width>131</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_field.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_104">
-    <property name="geometry">
-     <rect>
-      <x>580</x>
-      <y>270</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_98">
-    <property name="geometry">
-     <rect>
-      <x>520</x>
-      <y>270</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_62">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>170</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_26">
-    <property name="geometry">
-     <rect>
-      <x>760</x>
-      <y>260</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_126">
-    <property name="geometry">
-     <rect>
-      <x>730</x>
-      <y>390</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_39">
-    <property name="geometry">
-     <rect>
-      <x>623</x>
-      <y>497</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_75">
-    <property name="geometry">
-     <rect>
-      <x>760</x>
-      <y>170</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_81">
-    <property name="geometry">
-     <rect>
-      <x>416</x>
-      <y>326</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_99">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>150</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_27">
-    <property name="geometry">
-     <rect>
-      <x>800</x>
-      <y>170</y>
-      <width>91</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/port_forest.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_70">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>140</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_141">
-    <property name="geometry">
-     <rect>
-      <x>520</x>
-      <y>510</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>150</y>
-      <width>131</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_pasture.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_121">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>30</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_47">
-    <property name="geometry">
-     <rect>
-      <x>413</x>
-      <y>621</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_34">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>170</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_89">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>90</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_107">
-    <property name="geometry">
-     <rect>
-      <x>520</x>
-      <y>390</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_136">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>30</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_65">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>60</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_29">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>140</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_129">
+   <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>270</y>
-      <width>21</width>
+      <y>110</y>
+      <width>261</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;Vani&quot;;
+color: rgb(144, 0, 0);</string>
+    </property>
+    <property name="title">
+     <string>Development Cards</string>
+    </property>
+    <widget class="QPushButton" name="knight">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>41</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>knight</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="victoryPoint">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>20</y>
+       <width>41</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>victory</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="yearOfPlenty">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>20</y>
+       <width>41</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>year</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="largestArmyNum">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="victoryPointNum">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="monopoly">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>20</y>
+       <width>41</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>monopoly</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="largestArmy">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>20</y>
+       <width>41</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>largest army</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="yearOfPlentyNum">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="knightNum">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="monopolyNum">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="roll">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>330</y>
+      <width>121</width>
       <height>31</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">font: 13pt &quot;Andale Mono&quot;;
+color: rgb(209, 0, 0);
+background-color: rgb(255, 205, 55);
+</string>
+    </property>
     <property name="text">
-     <string/>
+     <string>Roll</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_115">
+   <widget class="QGroupBox" name="piecesBox">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>390</y>
-      <width>21</width>
-      <height>31</height>
+      <x>70</x>
+      <y>320</y>
+      <width>181</width>
+      <height>71</height>
      </rect>
     </property>
-    <property name="text">
-     <string/>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;Vani&quot;;
+
+color: rgb(234, 234, 234);</string>
     </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_42">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>650</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
+    <property name="title">
+     <string>Pieces</string>
     </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_76">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>570</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_55">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>170</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_84">
-    <property name="geometry">
-     <rect>
-      <x>278</x>
-      <y>326</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_96">
-    <property name="geometry">
-     <rect>
-      <x>416</x>
-      <y>91</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_112">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>390</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_13">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>390</y>
-      <width>131</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_field.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>500</x>
-      <y>150</y>
-      <width>131</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_clay.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_9">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
-      <y>270</y>
-      <width>136</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_stone.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_102">
-    <property name="geometry">
-     <rect>
-      <x>650</x>
-      <y>630</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_8">
-    <property name="geometry">
-     <rect>
-      <x>406</x>
-      <y>250</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
+    <widget class="QPushButton" name="road">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>road</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="settlement">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>20</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>home</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="settlementNum">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>5</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="city">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>20</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>city</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="roadNum">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>15</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="cityNum">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>50</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>4</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="development">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>20</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>development</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>50</y>
+       <width>61</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 7pt &quot;Vani&quot;;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>development</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>150</y>
-      <width>131</width>
-      <height>151</height>
+      <x>10</x>
+      <y>20</y>
+      <width>81</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_clay.png</pixmap>
+     <pixmap>../../catan-logo.png</pixmap>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_73">
+   <widget class="QLabel" name="username">
     <property name="geometry">
      <rect>
-      <x>689</x>
-      <y>530</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Dice_2">
-    <property name="geometry">
-     <rect>
-      <x>850</x>
-      <y>730</y>
-      <width>81</width>
-      <height>81</height>
+      <x>20</x>
+      <y>370</y>
+      <width>41</width>
+      <height>16</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-image:url(/Users/golnoush/Desktop/University/term 2/AP/AP_project/dice_6.png);</string>
+     <string notr="true">font: 87 8pt &quot;Source Sans Pro Black&quot;;
+color: rgb(209, 0, 0);
+background-color: rgb(255, 205, 55);
+border-color: rgb(255, 205, 55);
+selection-background-color:rgb(255, 205, 55);</string>
     </property>
     <property name="text">
-     <string/>
+     <string>player1</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_19">
+   <widget class="QLabel" name="playerPhotoLabel">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>510</y>
-      <width>131</width>
-      <height>151</height>
+      <x>10</x>
+      <y>320</y>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_field.png</pixmap>
+     <pixmap>../../University/term 2/AP/AP_project/red_person1.png</pixmap>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_137">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>510</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_60">
-    <property name="geometry">
-     <rect>
-      <x>413</x>
-      <y>380</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_24">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>620</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="autoDefault">
-     <bool>false</bool>
-    </property>
-    <property name="flat">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_124">
-    <property name="geometry">
-     <rect>
-      <x>800</x>
-      <y>390</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>270</y>
-      <width>131</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_pasture.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_50">
-    <property name="geometry">
-     <rect>
-      <x>620</x>
-      <y>20</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_92">
-    <property name="geometry">
-     <rect>
-      <x>557</x>
-      <y>91</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_15">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>30</y>
-      <width>131</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_forest.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_37">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>620</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_11">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>510</y>
-      <width>131</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_forest.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="geometry">
-     <rect>
-      <x>290</x>
-      <y>510</y>
-      <width>131</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_clay.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_16">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>390</y>
-      <width>131</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_desert.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_110">
-    <property name="geometry">
-     <rect>
-      <x>650</x>
-      <y>30</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_132">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>270</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>30</y>
-      <width>131</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_stone.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_118">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>510</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_28">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>560</y>
-      <width>91</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/port_clay.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_68">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>370</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_145">
+   <widget class="QGroupBox" name="resourceCardsBox">
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>30</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_29">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>50</y>
-      <width>91</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/port_stone.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_17">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>370</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_32">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>650</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_45">
-    <property name="geometry">
-     <rect>
-      <x>482</x>
-      <y>410</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_6">
-    <property name="geometry">
-     <rect>
-      <x>479</x>
-      <y>610</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_79">
-    <property name="geometry">
-     <rect>
-      <x>626</x>
-      <y>446</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Dice_1">
-    <property name="geometry">
-     <rect>
-      <x>750</x>
-      <y>730</y>
-      <width>81</width>
-      <height>81</height>
+      <y>0</y>
+      <width>261</width>
+      <height>111</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-image:url(/Users/golnoush/Desktop/University/term 2/AP/AP_project/dice_6.png);</string>
+     <string notr="true">font: 10pt &quot;Vani&quot;;
+color: rgb(144, 0, 0);</string>
     </property>
-    <property name="text">
-     <string/>
+    <property name="title">
+     <string>Resource Cards</string>
     </property>
+    <widget class="QLabel" name="clayNum">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="forestNum">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="stoneNum">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="pastureNum">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="fieldNum">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="clay">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>41</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>clay</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="field">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>20</y>
+       <width>41</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>field</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="forest">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>20</y>
+       <width>41</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>forest</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="stone">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>20</y>
+       <width>41</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>stone</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pasture">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>20</y>
+       <width>41</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>pasture</string>
+     </property>
+    </widget>
    </widget>
-   <widget class="QPushButton" name="pushButton_119">
+   <widget class="QPushButton" name="trade">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>150</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_87">
-    <property name="geometry">
-     <rect>
-      <x>486</x>
-      <y>446</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>30</y>
-      <width>131</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_field.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_105">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>270</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_93">
-    <property name="geometry">
-     <rect>
-      <x>556</x>
-      <y>570</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_11">
-    <property name="geometry">
-     <rect>
-      <x>620</x>
-      <y>370</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_113">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>30</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_20">
-    <property name="geometry">
-     <rect>
-      <x>833</x>
+      <x>510</x>
       <y>330</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_63">
-    <property name="geometry">
-     <rect>
-      <x>203</x>
-      <y>260</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_27">
-    <property name="geometry">
-     <rect>
-      <x>560</x>
-      <y>140</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_127">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>390</y>
-      <width>21</width>
+      <width>121</width>
       <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_53">
-    <property name="geometry">
-     <rect>
-      <x>620</x>
-      <y>410</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_40">
-    <property name="geometry">
-     <rect>
-      <x>483</x>
-      <y>260</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_26">
-    <property name="geometry">
-     <rect>
-      <x>740</x>
-      <y>520</y>
-      <width>91</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/port_field.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_18">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>390</y>
-      <width>131</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_pasture.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_82">
-    <property name="geometry">
-     <rect>
-      <x>627</x>
-      <y>204</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_33">
-    <property name="geometry">
-     <rect>
-      <x>623</x>
-      <y>260</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_100">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>150</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_122">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>270</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_71">
-    <property name="geometry">
-     <rect>
-      <x>750</x>
-      <y>497</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_35">
-    <property name="geometry">
-     <rect>
-      <x>413</x>
-      <y>290</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_20">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>360</y>
-      <width>91</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/Desktop/port.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_22">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>500</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_139">
-    <property name="geometry">
-     <rect>
-      <x>650</x>
-      <y>510</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_48">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>530</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_21">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>560</y>
-      <width>91</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/Desktop/University/term 2/AP/AP_project/port_clay.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_133">
-    <property name="geometry">
-     <rect>
-      <x>520</x>
-      <y>30</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_23">
-    <property name="geometry">
-     <rect>
-      <x>820</x>
-      <y>180</y>
-      <width>91</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/Desktop/University/term 2/AP/AP_project/port_forest.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_90">
-    <property name="geometry">
-     <rect>
-      <x>693</x>
-      <y>570</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_22">
-    <property name="geometry">
-     <rect>
-      <x>750</x>
-      <y>530</y>
-      <width>91</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/Desktop/University/term 2/AP/AP_project/port_field.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_24">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>50</y>
-      <width>91</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/Desktop/University/term 2/AP/AP_project/port_stone.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_108">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>510</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_14">
-    <property name="geometry">
-     <rect>
-      <x>547</x>
-      <y>250</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_116">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>270</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_58">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>410</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_25">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
-      <y>70</y>
-      <width>91</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/Desktop/University/term 2/AP/AP_project/port_pasture.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_77">
-    <property name="geometry">
-     <rect>
-      <x>762</x>
-      <y>446</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_66">
-    <property name="geometry">
-     <rect>
-      <x>765</x>
-      <y>410</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_14">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>270</y>
-      <width>131</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_forest.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_30">
-    <property name="geometry">
-     <rect>
-      <x>830</x>
-      <y>300</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_144">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>270</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_56">
-    <property name="geometry">
-     <rect>
-      <x>830</x>
-      <y>380</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_43">
-    <property name="geometry">
-     <rect>
-      <x>620</x>
-      <y>170</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_138">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>510</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_85">
-    <property name="geometry">
-     <rect>
-      <x>346</x>
-      <y>204</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_97">
-    <property name="geometry">
-     <rect>
-      <x>555</x>
-      <y>326</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="playing">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>700</y>
-      <width>511</width>
-      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: italic 14pt &quot;Marker Felt&quot;;
-font: italic 24pt &quot;Marker Felt&quot;;
-color: rgb(20, 34, 177);</string>
+     <string notr="true">font: 13pt &quot;Andale Mono&quot;;
+color: rgb(209, 0, 0);
+background-color: rgb(255, 205, 55);
+</string>
     </property>
     <property name="text">
-     <string>who is playing?</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_103">
-    <property name="geometry">
-     <rect>
-      <x>790</x>
-      <y>270</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_7">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>150</y>
-      <width>131</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_stone.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_61">
-    <property name="geometry">
-     <rect>
-      <x>343</x>
-      <y>500</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_9">
-    <property name="geometry">
-     <rect>
-      <x>613</x>
-      <y>612</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_125">
-    <property name="geometry">
-     <rect>
-      <x>650</x>
-      <y>270</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_74">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>20</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_12">
-    <property name="geometry">
-     <rect>
-      <x>710</x>
-      <y>270</y>
-      <width>131</width>
-      <height>161</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_pasture.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_38">
-    <property name="geometry">
-     <rect>
-      <x>620</x>
-      <y>650</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_25">
-    <property name="geometry">
-     <rect>
-      <x>415</x>
-      <y>140</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_51">
-    <property name="geometry">
-     <rect>
-      <x>274</x>
-      <y>290</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_131">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>150</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_4">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>130</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_111">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>390</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_120">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>630</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_18">
-    <property name="geometry">
-     <rect>
-      <x>620</x>
-      <y>130</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_80">
-    <property name="geometry">
-     <rect>
-      <x>345</x>
-      <y>446</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_69">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>300</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_140">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>390</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_46">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>620</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_88">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>204</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_130">
-    <property name="geometry">
-     <rect>
-      <x>520</x>
-      <y>150</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_106">
-    <property name="geometry">
-     <rect>
-      <x>310</x>
-      <y>630</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_94">
-    <property name="geometry">
-     <rect>
-      <x>696</x>
-      <y>327</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_64">
-    <property name="geometry">
-     <rect>
-      <x>205</x>
-      <y>410</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_12">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>370</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_30">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
-      <y>70</y>
-      <width>91</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/port_pasture.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_128">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>510</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_41">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>290</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_114">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>150</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_21">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>446</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_28">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>290</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_83">
-    <property name="geometry">
-     <rect>
-      <x>486</x>
-      <y>204</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_54">
-    <property name="geometry">
-     <rect>
-      <x>343</x>
-      <y>260</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_101">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>150</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_95">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>91</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_59">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>380</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_23">
-    <property name="geometry">
-     <rect>
-      <x>414</x>
-      <y>60</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_123">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>630</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_7">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>250</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_36">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>20</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_72">
-    <property name="geometry">
-     <rect>
-      <x>553</x>
-      <y>530</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_142">
-    <property name="geometry">
-     <rect>
-      <x>583</x>
-      <y>630</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_91">
-    <property name="geometry">
-     <rect>
-      <x>416</x>
-      <y>570</y>
-      <width>16</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_49">
-    <property name="geometry">
-     <rect>
-      <x>484</x>
-      <y>500</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_134">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>150</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_17">
-    <property name="geometry">
-     <rect>
-      <x>500</x>
-      <y>390</y>
-      <width>131</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/tile_forest.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_109">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>510</y>
-      <width>21</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_52">
-    <property name="geometry">
-     <rect>
-      <x>554</x>
-      <y>60</y>
-      <width>21</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>130</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_19">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>610</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_146">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>490</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_5">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>490</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_13">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>490</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>680</x>
-      <y>490</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_16">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>370</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_15">
-    <property name="geometry">
-     <rect>
-      <x>680</x>
-      <y>250</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_10">
-    <property name="geometry">
-     <rect>
-      <x>760</x>
-      <y>370</y>
-      <width>31</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="robber">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>450</y>
-      <width>21</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../Desktop/University/term 2/AP/AP_project/1.png</pixmap>
+     <string>Trade</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../Favorites/Desktop/catan images/trade/trade.png</normaloff>../../../Favorites/Desktop/catan images/trade/trade.png</iconset>
     </property>
    </widget>
   </widget>
