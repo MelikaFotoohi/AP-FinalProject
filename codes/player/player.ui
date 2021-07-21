@@ -6,19 +6,334 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>656</width>
-    <height>442</height>
+    <width>653</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="turn">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>360</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 13pt &quot;Andale Mono&quot;;
+color: rgb(209, 0, 0);
+background-color: rgb(255, 205, 55);
+</string>
+    </property>
+    <property name="text">
+     <string>End your turn</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../Favorites/Desktop/catan images/trade/next.png</normaloff>../../../Favorites/Desktop/catan images/trade/next.png</iconset>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>110</y>
+      <width>261</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;Vani&quot;;
+color: rgb(144, 0, 0);</string>
+    </property>
+    <property name="title">
+     <string>Development Cards</string>
+    </property>
+    <widget class="QPushButton" name="knight">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>41</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>knight</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="victoryPoint">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>20</y>
+       <width>41</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>victory</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="yearOfPlenty">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>20</y>
+       <width>41</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>year</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="largestArmyNum">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="victoryPointNum">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="monopoly">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>20</y>
+       <width>41</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>monopoly</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="largestArmy">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>20</y>
+       <width>41</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>largest army</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="yearOfPlentyNum">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="knightNum">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="monopolyNum">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="roll">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>330</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 13pt &quot;Andale Mono&quot;;
+color: rgb(209, 0, 0);
+background-color: rgb(255, 205, 55);
+</string>
+    </property>
+    <property name="text">
+     <string>Roll</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="piecesBox">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>320</y>
+      <width>181</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 10pt &quot;Vani&quot;;
+
+color: rgb(234, 234, 234);</string>
+    </property>
+    <property name="title">
+     <string>Pieces</string>
+    </property>
+    <widget class="QPushButton" name="road">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>road</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="settlement">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>20</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>home</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="settlementNum">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>50</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>5</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="city">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>20</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>city</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="roadNum">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>50</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>15</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="cityNum">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>50</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>4</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="development">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>20</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>development</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>50</y>
+       <width>61</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 7pt &quot;Vani&quot;;
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>development</string>
+     </property>
+    </widget>
+   </widget>
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>30</y>
+      <x>10</x>
+      <y>20</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -27,14 +342,14 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../../../../../../Downloads/catan-logo.png</pixmap>
+     <pixmap>../../catan-logo.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="username">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>360</y>
+      <x>20</x>
+      <y>370</y>
       <width>41</width>
       <height>16</height>
      </rect>
@@ -50,35 +365,27 @@ selection-background-color:rgb(255, 205, 55);</string>
      <string>player1</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="trade">
+   <widget class="QLabel" name="playerPhotoLabel">
     <property name="geometry">
      <rect>
-      <x>490</x>
+      <x>10</x>
       <y>320</y>
-      <width>111</width>
-      <height>31</height>
+      <width>51</width>
+      <height>51</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">font: 12pt &quot;Algerian&quot;;
-color: rgb(209, 0, 0);
-background-color: rgb(255, 205, 55);
-border-color: rgb(255, 205, 55);
-</string>
-    </property>
     <property name="text">
-     <string>Trade</string>
+     <string/>
     </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../../../../../../Favorites/Desktop/catan images/trade/trade.png</normaloff>../../../../../../Favorites/Desktop/catan images/trade/trade.png</iconset>
+    <property name="pixmap">
+     <pixmap>../../University/term 2/AP/AP_project/red_person1.png</pixmap>
     </property>
    </widget>
    <widget class="QGroupBox" name="resourceCardsBox">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>20</y>
+      <x>380</x>
+      <y>0</y>
       <width>261</width>
       <height>111</height>
      </rect>
@@ -165,7 +472,7 @@ color: rgb(144, 0, 0);</string>
       </rect>
      </property>
      <property name="text">
-      <string>PushButton</string>
+      <string>clay</string>
      </property>
     </widget>
     <widget class="QPushButton" name="field">
@@ -178,7 +485,7 @@ color: rgb(144, 0, 0);</string>
       </rect>
      </property>
      <property name="text">
-      <string>PushButton</string>
+      <string>field</string>
      </property>
     </widget>
     <widget class="QPushButton" name="forest">
@@ -191,7 +498,7 @@ color: rgb(144, 0, 0);</string>
       </rect>
      </property>
      <property name="text">
-      <string>PushButton</string>
+      <string>forest</string>
      </property>
     </widget>
     <widget class="QPushButton" name="stone">
@@ -204,7 +511,7 @@ color: rgb(144, 0, 0);</string>
       </rect>
      </property>
      <property name="text">
-      <string>PushButton</string>
+      <string>stone</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pasture">
@@ -217,355 +524,34 @@ color: rgb(144, 0, 0);</string>
       </rect>
      </property>
      <property name="text">
-      <string>PushButton</string>
+      <string>pasture</string>
      </property>
     </widget>
    </widget>
-   <widget class="QGroupBox" name="piecesBox">
+   <widget class="QPushButton" name="trade">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>310</y>
-      <width>181</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Vani&quot;;
-
-color: rgb(234, 234, 234);</string>
-    </property>
-    <property name="title">
-     <string>Pieces</string>
-    </property>
-    <widget class="QPushButton" name="road">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>31</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="settlement">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>20</y>
-       <width>31</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="settlementNum">
-     <property name="geometry">
-      <rect>
-       <x>60</x>
-       <y>50</y>
-       <width>16</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>5</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="city">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>20</y>
-       <width>31</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="roadNum">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>50</y>
-       <width>16</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>15</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="cityNum">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>50</y>
-       <width>16</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>4</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="development">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>20</y>
-       <width>31</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_5">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>50</y>
-       <width>61</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 7pt &quot;Vani&quot;;
-color: rgb(255, 255, 255);</string>
-     </property>
-     <property name="text">
-      <string>development</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QPushButton" name="turn">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>350</y>
-      <width>221</width>
+      <x>510</x>
+      <y>330</y>
+      <width>121</width>
       <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 13pt &quot;Algerian&quot;;
+     <string notr="true">font: 13pt &quot;Andale Mono&quot;;
 color: rgb(209, 0, 0);
 background-color: rgb(255, 205, 55);
-border-color: rgb(255, 205, 55);
-selection-background-color:rgb(255, 205, 55);</string>
+</string>
     </property>
     <property name="text">
-     <string>End your turn</string>
+     <string>Trade</string>
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../../../../../Favorites/Desktop/catan images/trade/next.png</normaloff>../../../../../../Favorites/Desktop/catan images/trade/next.png</iconset>
-    </property>
-   </widget>
-   <widget class="QLabel" name="playerPhotoLabel">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>320</y>
-      <width>41</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>../../../../../../Favorites/Desktop/catan images/player photo/girl2.jpg</pixmap>
-    </property>
-   </widget>
-   <widget class="QGroupBox" name="groupBox">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>130</y>
-      <width>261</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Vani&quot;;
-color: rgb(144, 0, 0);</string>
-    </property>
-    <property name="title">
-     <string>Development Cards</string>
-    </property>
-    <widget class="QPushButton" name="knight">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>41</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="victoryPoint">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>20</y>
-       <width>41</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="yearOfPlenty">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>20</y>
-       <width>41</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="roadBuildingNum">
-     <property name="geometry">
-      <rect>
-       <x>130</x>
-       <y>90</y>
-       <width>20</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>0</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="victoryPointNum">
-     <property name="geometry">
-      <rect>
-       <x>220</x>
-       <y>90</y>
-       <width>20</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>0</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="monopoly">
-     <property name="geometry">
-      <rect>
-       <x>60</x>
-       <y>20</y>
-       <width>41</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="roadBuilding">
-     <property name="geometry">
-      <rect>
-       <x>110</x>
-       <y>20</y>
-       <width>41</width>
-       <height>71</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>PushButton</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="yearOfPlentyNum">
-     <property name="geometry">
-      <rect>
-       <x>180</x>
-       <y>90</y>
-       <width>20</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>0</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="knightNum">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>90</y>
-       <width>20</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>0</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="monopolyNum">
-     <property name="geometry">
-      <rect>
-       <x>80</x>
-       <y>90</y>
-       <width>20</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>0</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QPushButton" name="roll">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>320</y>
-      <width>111</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 13pt &quot;Algerian&quot;;
-color: rgb(209, 0, 0);
-background-color: rgb(255, 205, 55);
-border-color: rgb(255, 205, 55);
-selection-background-color:rgb(255, 205, 55);</string>
-    </property>
-    <property name="text">
-     <string>Roll</string>
+      <normaloff>../../../Favorites/Desktop/catan images/trade/trade.png</normaloff>../../../Favorites/Desktop/catan images/trade/trade.png</iconset>
     </property>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>656</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
