@@ -14,12 +14,14 @@ bool Map::tilesNumbers(int pixNum , QVector<int>tile_nums){
         return true;
     return false;
 }
+
 bool Map::tokenNumbers(int tokenNum , QVector<int> token_nums){
     if((tokenNum <= 8 && token_nums[tokenNum] == 2) ||  (tokenNum == 9 && token_nums[tokenNum] == 1))
         return true;
     return false;
 
 }
+
 /* make a random board */
 void Map::randomMap(QVector<QPixmap> pixs,QVector<QPixmap> pixs_nums){
     QPixmap pix;
@@ -54,7 +56,7 @@ void Map::randomMap(QVector<QPixmap> pixs,QVector<QPixmap> pixs_nums){
             Tile* tptr  = new Tile(TileType(pixNum),tokenRandGnrt(tokenNum),labels[i]);
             tiles.push_back(tptr);
         }else{
-            QPixmap pixmap_16("/Users/macbook/Desktop/images/tiles/tile_desert.png");
+            QPixmap pixmap_16(":/new/prefix1/tiles/tile_desert.png");
             ui->label_16->setPixmap(pixmap_16);
             ui->label_16->setMask(pixmap_16.mask());
             Tile* tptr  = new Tile(TileType(5),0,labels[i]);
@@ -72,23 +74,50 @@ Map::Map(QWidget *parent) :
     srand(time(NULL));
     ui->setupUi(this);
 
-  //  this->centralWidget()->setStyleSheet( "background-image:url(\"/Users/macbook/Desktop/goli/AP_project/sea.jpeg\"); background-position: center;");
-    QPixmap pixmap_field("/Users/macbook/Desktop/images/tiles/tile_field.png");
-    QPixmap pixmap_stone("/Users/macbook/Desktop/images/tiles/tile_stone.png");
-    QPixmap pixmap_clay("/Users/macbook/Desktop/images/tiles/tile_clay.png");
-    QPixmap pixmap_pasture("/Users/macbook/Desktop/images/tiles/tile_pasture.png");
-    QPixmap pixmap_forest("/Users/macbook/Desktop/images/tiles/tile_forest.png");
+    QPixmap bkgnd(":/new/prefix1/backgrounds/sea.jpeg");
+    bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette palette;
+    palette.setBrush(QPalette::Window, bkgnd);
+    this->setPalette(palette);
 
-    QPixmap pixmap_num2("/Users/macbook/Desktop/images/tokens/num_2.jpg");
-    QPixmap pixmap_num3("/Users/macbook/Desktop/images/tokens/num_3.jpg");
-    QPixmap pixmap_num4("/Users/macbook/Desktop/images/tokens/num_4.jpg");
-    QPixmap pixmap_num5("/Users/macbook/Desktop/images/tokens/num_5.jpg");
-    QPixmap pixmap_num6("/Users/macbook/Desktop/images/tokens/num_6.jpg");
-    QPixmap pixmap_num8("/Users/macbook/Desktop/images/tokens/num_8.jpg");
-    QPixmap pixmap_num9("/Users/macbook/Desktop/images/tokens/num_9.jpg");
-    QPixmap pixmap_num10("/Users/macbook/Desktop/images/tokens/num_10.jpg");
-    QPixmap pixmap_num11("/Users/macbook/Desktop/images/tokens/num_11.jpg");
-    QPixmap pixmap_num12("/Users/macbook/Desktop/images/tokens/num_12.jpg");
+    setFixedSize(945 , 865);
+
+    QPixmap pixmap_field(":/new/prefix1/tiles/tile_field.png");
+    QPixmap pixmap_stone(":/new/prefix1/tiles/tile_stone.png");
+    QPixmap pixmap_clay(":/new/prefix1/tiles/tile_clay.png");
+    QPixmap pixmap_pasture(":/new/prefix1/tiles/tile_pasture.png");
+    QPixmap pixmap_forest(":/new/prefix1/tiles/tile_forest.png");
+
+    QPixmap pixmap_num2(":/new/prefix1/tiles_num/num_2.jpg");
+    QPixmap pixmap_num3(":/new/prefix1/tiles_num/num_3.jpg");
+    QPixmap pixmap_num4(":/new/prefix1/tiles_num/num_4.jpg");
+    QPixmap pixmap_num5(":/new/prefix1/tiles_num/num_5.jpg");
+    QPixmap pixmap_num6(":/new/prefix1/tiles_num/num_6.jpg");
+    QPixmap pixmap_num8(":/new/prefix1/tiles_num/num_8.jpg");
+    QPixmap pixmap_num9(":/new/prefix1/tiles_num/num_9.jpg");
+    QPixmap pixmap_num10(":/new/prefix1/tiles_num/num_10.jpg");
+    QPixmap pixmap_num11(":/new/prefix1/tiles_num/num_11.jpg");
+    QPixmap pixmap_num12(":/new/prefix1/tiles_num/num_12.jpg");
+
+    QPixmap pixmap_fieldPort(":/new/prefix1/ports/port_field.png");
+    QPixmap pixmap_stonePort(":/new/prefix1/ports/port_stone.png");
+    QPixmap pixmap_clayPort(":/new/prefix1/ports/port_clay.png");
+    QPixmap pixmap_pasturePort(":/new/prefix1/ports/port_pasture.png");
+    QPixmap pixmap_forestPort(":/new/prefix1/ports/port_forest.png");
+    QPixmap pixmap_Port(":/new/prefix1/ports/port.png");
+
+    ui->label_20->setPixmap(pixmap_Port);
+    ui->label_20->setMask(pixmap_clayPort.mask());
+    ui->label_21->setPixmap(pixmap_clayPort);
+    ui->label_21->setMask(pixmap_clayPort.mask());
+    ui->label_22->setPixmap(pixmap_fieldPort);
+    ui->label_22->setMask(pixmap_fieldPort.mask());
+    ui->label_23->setPixmap(pixmap_forestPort);
+    ui->label_23->setMask(pixmap_forestPort.mask());
+    ui->label_24->setPixmap(pixmap_stonePort);
+    ui->label_24->setMask(pixmap_stonePort.mask());
+    ui->label_25->setPixmap(pixmap_pasturePort);
+    ui->label_25->setMask(pixmap_pasturePort.mask());
 
     QVector <QPixmap> pix_nums{pixmap_num2 , pixmap_num3 , pixmap_num4 , pixmap_num5 , pixmap_num6 ,
                                pixmap_num8 , pixmap_num9 , pixmap_num10 , pixmap_num11 , pixmap_num12};
@@ -135,10 +164,13 @@ Map::Map(QWidget *parent) :
                 ui->pushButton_17 , ui->pushButton_15 , ui->pushButton_19 , ui->pushButton_12 , ui->pushButton_11 , ui->pushButton_9,
                 ui->pushButton_10 , ui->pushButton_5 , ui->pushButton_16,ui->pushButton_3 ,ui->pushButton_146 ,ui->pushButton_13 , ui->pushButton_2,
                 ui->pushButton_6};
-    ui->pushButton_146->setVisible(false);
+  //  ui->pushButton_146->setVisible(false);
     tokens = t;
-
-    QPixmap pixmap_robber("/Users/macbook/Desktop/images/robber/robber.png");
+    for(int i =0 ;i<tokens.size(); i++){
+        tokens[i]->setEnabled(false);
+    }
+    robberToken = ui->pushButton_146;
+    QPixmap pixmap_robber(":/new/prefix1/robber/1.png");
     ui->robber->setPixmap(pixmap_robber);
     ui->robber->setMask(pixmap_robber.mask());
 
@@ -157,12 +189,12 @@ Map::Map(QWidget *parent) :
 
 
 }
+
+/* return settlements near ports*/
 QVector<QPair<tileType,QPair<QPushButton*,QPushButton*>>> Map::getPorts(){
     return ports;
 }
-void Map::moveRobber(int n){
-    ui->robber->move(tokens[n]->x() + 30 , tokens[n]->y());
-}
+
 /* define tile's type */
 tileType Map::TileType(int n){
     if (n==0)
@@ -208,39 +240,40 @@ QVector<Tile*> Map::getTiles(){
     return tiles;
 }
 
-/* remove vertex */
+QVector<QPushButton*> Map::getTokens(){
+    return tokens;
+}
+
+QPushButton* Map::getRobberToken(){
+    return robberToken;
+}
+
+void Map::setRobberToken(QPushButton* p){
+    robberToken = p;
+}
+
+/* remove vertex after putting a settlemet on it */
 void Map::removeVertex(QPushButton* p){
     int i=0;
     for(;i<vertexsAvailable.size();i++){
         if(vertexsAvailable[i] == p)
             break;
     }
-  //  vertexsAvailable[i]->setEnabled(false);
     vertexsAvailable.removeAt(i);
 }
 
-/* remove edge */
+/* remove edge after putting a road on it */
 void Map::removeEdge(QPushButton* p){
     int i=0;
     for(;i<edgesAvailable.size();i++){
         if(edgesAvailable[i] == p)
             break;
     }
-  //  edgesAvailable[i]->setEnabled(false);
     edgesAvailable.removeAt(i);
 }
 
-QVector<QLabel*> Map::rollNumTile(int num){
-    QVector<QLabel*> t;
-    for(int i=0;i<tiles.size();i++){
-        if(tiles[i]->getToken() == num){
-            t.push_back(tiles[i]->getLocation());
-        }
-    }
-    return t;
-}
+
 Map::~Map()
 {
     delete ui;
 }
-
