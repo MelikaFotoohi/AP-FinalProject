@@ -3,8 +3,12 @@
 
 #include <QVector>
 #include <QSignalMapper>
-
-
+#include <QThread>
+#include <QTcpServer>
+#include <QMessageBox>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QFile>
 #include "player.h"
 #include "map.h"
 #include "bank.h"
@@ -12,9 +16,9 @@
 #include "trade.h"
 #include "login.h"
 #include "winners.h"
-#include <QMessageBox>
+#include "thread.h"
 
-class Game : public QMainWindow
+class Game : public QTcpServer
 {
     Q_OBJECT
 public:
@@ -33,6 +37,8 @@ public:
     void checkGettingMonopoly(tileType type, int n , int num);
     void sort(QVector<QPair<QString , int>>);
     void checkLargestArmy();
+    void startServer(void);
+    int givePlayerId(QString name);
     ~Game();
 private:
     QSignalMapper *signalMapper;
@@ -53,6 +59,9 @@ private:
     static int player_;
     static int count;
 
+    void incomingConnection(qintptr socketDescriptor);
+    QVector<QThread*> workerThreads;
+
 public slots:
     void goToLogin(int);
     void giveCardRoll();
@@ -68,7 +77,11 @@ public slots:
     void getDevelopment();
     void getMonopoly(int);
     void getYeatOfPlenty(int);
+    void read(QJsonDocument a,qintptr descriptor);
 
+signals:
+ void write(QByteArray);
+ void run(void);
 };
 
 #endif // GAME_H
