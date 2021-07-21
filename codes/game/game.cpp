@@ -5,7 +5,6 @@
 #include <QDebug>
 
 int Game::diceNum = 2;
-int Game::gameStarted_ = 0;
 int Game::player_ = 0;
 int Game::count = 0;
 
@@ -19,10 +18,15 @@ Game::Game(QWidget *parent) :
 
     dice = new Dice(map);
 
-    player1 = new Player("player 1",bank,map);
-    player2 = new Player("player 2",bank,map);
-    player3 = new Player("player 3",bank,map);
-    player4 = new Player("player 4",bank,map);
+    QPixmap blue(":/new/prefix1/players/blue_person.png");
+    QPixmap green(":/new/prefix1/players/green_person.png");
+    QPixmap red(":/new/prefix1/players/red_person1.png");
+    QPixmap yellow(":/new/prefix1/players/yellow_person.png");
+
+    player1 = new Player(blue , "player 1",bank,map);
+    player2 = new Player(green , "player 2",bank,map);
+    player3 = new Player(red , "player 3",bank,map);
+    player4 = new Player(yellow ,"player 4",bank,map);
     players.push_back(player1);
     players.push_back(player2);
     players.push_back(player3);
@@ -58,22 +62,56 @@ Game::Game(QWidget *parent) :
     roadConnect();
     monopolyConnect();
     yearOfPlentyConnect();
+    robberConnect();
 }
+
 void Game::goToLogin(int i){
-    players[i]->setName(QString::number(i));
+    players[i]->setName(logins[i]->ui->led_username->text());
     logins[i]->close();
     players[i]->show();
     if(i!=0)
         players[i]->enablePushButtons(false);
 }
+
 void Game::gotoRoll(){
     diceNum = dice->roll();
-    map->ui->diceNum->setText(QString::number(diceNum));
-    giveCardRoll();
-//    for(int i=0;i<players.size();i++)
-//        players[i]->ui->roll->setDisabled(true);
+    for(int i=0;i<players.size();i++)
+        players[i]->ui->roll->setDisabled(true);
+    //map->ui->diceNum->setText(QString::number(diceNum));
+    if(diceNum!=7){
+        for(int i= 0; i< map->getTokens().size() ; i++){
+                map->getTokens()[i]->setEnabled(false);
+        }
+        giveCardRoll();
+    }
+    else{
+        for(int i= 0; i< map->getTokens().size() ; i++){
+            if(map->getTokens()[i] != map->getRobberToken())
+                map->getTokens()[i]->setEnabled(true);
+        }
+    }
 }
+void Game::robberConnect(){
+    for(int i=0;i<map->getTokens().size();i++){
+        signalMapper = new QSignalMapper(this);
+        connect(map->getTokens()[i],SIGNAL(clicked()),signalMapper,SLOT(map()));
+        signalMapper->setMapping(map->getTokens()[i],map->getTokens()[i]);
+        connect(signalMapper, SIGNAL(mappedObject(QObject*)),this, SLOT(robberSelected(QObject*)));
+    }
+}
+void Game::robberSelected(QObject* t){
+    for(int i=0; i<map->getTokens().size(); i++){
+            map->getTokens()[i]->setEnabled(false);
+    }
+     int pre = map->getTokens().indexOf(map->getRobberToken());
+     map->getTiles()[pre]->changeRobber(false);
 
+     QPushButton* token = qobject_cast<QPushButton*>(t);
+     int cur = map->getTokens().indexOf(token);
+     map->setRobberToken(token);
+     map->getTiles()[cur]->changeRobber(true);
+     map->ui->robber->move(token->x() + 40 ,token->y() - 30);
+}
 void Game::monopolyConnect(){
     for(int i=0;i<players.size();i++){
         signalMapper = new QSignalMapper(this);
@@ -82,6 +120,7 @@ void Game::monopolyConnect(){
         connect(signalMapper, SIGNAL(mappedInt(int)),this, SLOT(getMonopoly(int)));
     }
 }
+
 void Game::yearOfPlentyConnect(){
     for(int i=0;i<players.size();i++){
         signalMapper = new QSignalMapper(this);
@@ -144,7 +183,6 @@ void Game::slectedBuilding(QObject* p){
         if(player_ == isSettlement)
             slectedCity(building);
     }
-   // if(player_==0 && player1->isSettlement(building))
 }
 
 void Game::setColorForSettlements(Player* thePlayer, QPixmap pixmap, QPushButton* housePB) {
@@ -164,10 +202,8 @@ void Game::setColorForCities(Player * thePlayer, QPixmap pixmap, QPushButton * c
     bank->cityBought();
 }
 
-void Game::setColorForRoads(Player *thePlayer, QPixmap pixmap, QPushButton * roadPB) {
-    QIcon roadIcon(pixmap);
-    roadPB->setIcon(roadIcon);
-    roadPB->setIconSize(pixmap.rect().size());
+void Game::setColorForRoads(Player *thePlayer, QPushButton * roadPB) {
+
     thePlayer->addRoad(roadPB);
     map->removeEdge(roadPB);
     bank->roadBought();
@@ -177,20 +213,28 @@ void Game::setColorForRoads(Player *thePlayer, QPixmap pixmap, QPushButton * roa
 void Game::slectedSetllement(QObject* p){
     QPushButton* house = qobject_cast<QPushButton*>(p);
     if(player1->buySettlement() && player_ == 0){
-        QPixmap pixmap_home("/Users/macbook/Desktop/images/pieces/blue_house.png");
+        QPixmap pixmap_home(":/new/prefix1/pieces/blue_settlement.png");
         setColorForSettlements(player1, pixmap_home, house);
+        if(count == 0 || count == 4)
+                   player1->ui->settlement->setDisabled(true);
     }
     else if(player2->buySettlement() && player_ == 1){
-        QPixmap pixmap_home("/Users/macbook/Desktop/images/pieces/green_house.png");
+        QPixmap pixmap_home(":/new/prefix1/pieces/green_settlement.png");
         setColorForSettlements(player2, pixmap_home, house);
+        if(count == 1)
+                   player1->ui->settlement->setDisabled(true);
     }
     else if(player3->buySettlement() &&player_ == 2){
-        QPixmap pixmap_home("/Users/macbook/Desktop/images/pieces/red_house.png");
+        QPixmap pixmap_home(":/new/prefix1/pieces/red_settlement.png");
         setColorForSettlements(player3, pixmap_home, house);
+        if(count == 2)
+                   player3->ui->settlement->setDisabled(true);
     }
     else if(player4->buySettlement() && player_ == 3){
-        QPixmap pixmap_home("/Users/macbook/Desktop/images/pieces/yellow_house.png");
+        QPixmap pixmap_home(":/new/prefix1/pieces/yellow_settlement.png");
         setColorForSettlements(player4, pixmap_home, house);
+        if(count == 3)
+                   player4->ui->settlement->setDisabled(true);
     }
     map->setHide(map->getAvailableVertexs());
 }
@@ -198,19 +242,19 @@ void Game::slectedSetllement(QObject* p){
 void Game::slectedCity(QObject* p){
     QPushButton* city = qobject_cast<QPushButton*>(p);
     if(player1->buyCity() && player_ == 0){
-        QPixmap pix("/Users/macbook/Desktop/images/pieces/blue_city.jpg");
+        QPixmap pix(":/new/prefix1/pieces/blue_city.png");
         setColorForCities(player1, pix, city);
     }
     else if(player2->buyCity() && player_ == 1){
-        QPixmap home("/Users/macbook/Desktop/images/pieces/green_city.jpg");
+        QPixmap home(":/new/prefix1/pieces/green_city.png");
         setColorForCities(player2, home, city);
     }
     else if(player3->buyCity() && player_ == 2){
-        QPixmap home("/Users/macbook/Desktop/images/pieces/red_city.jpg");
+        QPixmap home(":/new/prefix1/pieces/red_city.png");
         setColorForCities(player3, home, city);
     }
     else if(player4->buyCity() && player_ == 3){
-        QPixmap home("/Users/macbook/Desktop/images/pieces/yellow_city.jpg");
+        QPixmap home(":/new/prefix1/pieces/yellow_city.png");
         setColorForCities(player4, home, city);
     }
 }
@@ -218,20 +262,30 @@ void Game::slectedCity(QObject* p){
 void Game::slectedRoad(QObject* p){
     QPushButton* road = qobject_cast<QPushButton*>(p);
     if(player1->buyRoad() && player_ == 0){
-        QPixmap pixmap_road("/Users/macbook/Desktop/images/pieces/blue_road.png");
-        setColorForRoads(player1, pixmap_road, road);
+        road->setStyleSheet("background-color:rgb(0,21,255)");
+        setColorForRoads(player1,  road);
+        if(count == 0 || count == 4)
+                   player1->ui->road->setDisabled(true);
+
     }
     else if(player2->buyRoad() && player_ == 1){
-        QPixmap pixmap_road("/Users/macbook/Desktop/images/pieces/green_road.png");
-        setColorForRoads(player2, pixmap_road, road);
+        road->setStyleSheet("background-color:rgb(28,137,66)");
+        setColorForRoads(player2,  road);
+        if(count == 1)
+                   player2->ui->settlement->setDisabled(true);
+
     }
     else if(player3->buyRoad() && player_ == 2){
-        QPixmap pixmap_road("/Users/macbook/Desktop/images/pieces/red_road.png");
-        setColorForRoads(player3, pixmap_road, road);
+        road->setStyleSheet("background-color:rgb(255,0,0)");
+        setColorForRoads(player3, road);
+        if(count == 2)
+                   player3->ui->settlement->setDisabled(true);
     }
     else if(player4->buyRoad() && player_ == 3){
-        QPixmap pixmap_road("/Users/macbook/Desktop/images/pieces/yellow_road.png");
-        setColorForRoads(player4, pixmap_road, road);
+        road->setStyleSheet("background-color:rgb(255,238,0)");
+        setColorForRoads(player4, road);
+        if(count == 3)
+                   player4->ui->settlement->setDisabled(true);
     }
     map->setHide(map->getAvailableEdges());
 }
@@ -246,7 +300,6 @@ void Game::tradeConnect(int i){
 void Game::goToTradeWindow(int i)
 {
     Trade *trade = new Trade(bank,players,i,map);
-    players[i]->close();
     trade->show();
 }
 
@@ -270,7 +323,6 @@ void Game::getDevelopment(){
 }
 
 void Game::getMonopoly(int n){
-
     QMessageBox msgBox;
     msgBox.setText(tr("Choose a resource"));
     QAbstractButton* pstone = msgBox.addButton(tr("Ore"), QMessageBox::YesRole);
@@ -300,6 +352,7 @@ void Game::getMonopoly(int n){
     if (msgBox.clickedButton()==ppasture)
         checkGettingMonopoly(pasture, n , num);
 }
+
 void Game::checkGettingMonopoly(tileType type, int n , int num)
 {
     num =0;
@@ -310,15 +363,18 @@ void Game::checkGettingMonopoly(tileType type, int n , int num)
     }
     players[n]->getMonopoly(type,num);
 }
-void Game::startGame(){
 
-}
 void Game::changeTurn(Player* pre,Player* cur){
     map->ui->playing->setText(cur->getName() + " turn");
     pre->enablePushButtons(false);
     cur->enablePushButtons(true);
+    checkLargestArmy();
+    cur->update();
+    if(count < 6)
+        cur->ui->roll->setDisabled(true);
     count++;
 }
+
 void Game::playerTurn(){
     player1->enablePushButtons(false);
     player2->enablePushButtons(false);
@@ -339,7 +395,7 @@ void Game::playerTurn(){
     }
     else if(player_ == 3){
         player_ = 3;
-        count++;
+        changeTurn(player4,player4);
     }
     checkWining();
     }
@@ -398,7 +454,8 @@ void Game::checkWining(){
         showWinner();
 
 }
-void sort(QVector<QPair<QString , int>> players_score){
+
+void Game::sort(QVector<QPair<QString , int>> players_score){
     int temp;
     for(int i = 0; i < players_score.size(); i++){
         for(int j = 1; j < players_score.size(); j++){
@@ -410,9 +467,51 @@ void sort(QVector<QPair<QString , int>> players_score){
         }
     }
 }
+
+void Game::checkLargestArmy(){
+
+    QVector<QPair<QString , int>> knights_numbers{{"player1" , player1->getKnights()} , {"player2" , player2->getKnights()} , {"player3" , player3->getKnights()} , {"player4" , player4->getKnights()}};
+    sort(knights_numbers);
+    if(knights_numbers[0].second != knights_numbers[1].second){
+       if(knights_numbers[0].first == "player1" && knights_numbers[0].second >= 3){
+
+            player1->setLargestArmy(true);
+            player2->setLargestArmy(false);
+            player2->setLargestArmy(false);
+            player2->setLargestArmy(false);
+
+       }
+       if(knights_numbers[0].first == "player2" && knights_numbers[0].second >= 3){
+            player1->setLargestArmy(false);
+            player2->setLargestArmy(true);
+            player2->setLargestArmy(false);
+            player2->setLargestArmy(false);
+
+       }
+       if(knights_numbers[0].first == "player3" && knights_numbers[0].second >= 3){
+            player1->setLargestArmy(false);
+            player2->setLargestArmy(false);
+            player2->setLargestArmy(true);
+            player2->setLargestArmy(false);
+
+       }
+       if(knights_numbers[0].first == "player4" && knights_numbers[0].second >= 3){
+            player1->setLargestArmy(false);
+            player2->setLargestArmy(false);
+            player2->setLargestArmy(false);
+            player2->setLargestArmy(true);
+
+       }
+       for(int i = 0; i < players.size(); i++){
+           players[i]->update();
+       }
+
+    }
+}
+
 void Game::showWinner(){
-//    winners* w = new winners();
-    QVector<QPair< QString , int>> players_score{{"player1" , player1->getTotalPoint()} , {"player2" , player2->getTotalPoint()} , {"player3" , player3->getTotalPoint()} , {"player4" , player4->getTotalPoint()}};
+   winners* w = new winners();
+    QVector<QPair< QString , int>> players_score{{player1->getName() , player1->getTotalPoint()} , {player2->getName() , player2->getTotalPoint()} , {player3->getName() , player3->getTotalPoint()} , {player4->getName() , player4->getTotalPoint()}};
     sort(players_score);
     player1->close();
     player2->close();
@@ -420,6 +519,16 @@ void Game::showWinner(){
     player4->close();
     map->close();
 
-//    w->show();
-//    w->showWinners(players_score);
+    w->show();
+   w->showWinners(players_score);
+}
+
+Game::~Game(){
+    delete map;
+    delete bank;
+    delete dice;
+    delete player1;
+    delete player2;
+    delete player3;
+    delete player4;
 }
