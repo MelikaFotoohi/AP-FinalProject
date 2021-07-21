@@ -2,16 +2,16 @@
 #define GAME_H
 
 #include <QVector>
-#include <QTcpServer>
+#include <QSignalMapper>
+
+
 #include "player.h"
 #include "map.h"
 #include "bank.h"
-#include "thread.h"
 #include "dice.h"
 #include "trade.h"
 #include "login.h"
-
-#include <QSignalMapper>
+#include "winners.h"
 #include <QMessageBox>
 
 class Game : public QMainWindow
@@ -19,18 +19,21 @@ class Game : public QMainWindow
     Q_OBJECT
 public:
     Game(QWidget *parent = nullptr);
-    void startGame();
     void checkWining();
     void settlementConnect();
     void roadConnect();
     void monopolyConnect();
     void yearOfPlentyConnect();
+    void robberConnect();
     void showWinner();
     void changeTurn(Player* pre,Player* cur);
     void setColorForSettlements(Player* thePlayer, QPixmap pixmap, QPushButton* housePB);
     void setColorForCities(Player * thePlayer, QPixmap pixmap, QPushButton * cityPB);
-    void setColorForRoads(Player *thePlayer, QPixmap pixmap, QPushButton * roadPB);
+    void setColorForRoads(Player *thePlayer, QPushButton * roadPB);
     void checkGettingMonopoly(tileType type, int n , int num);
+    void sort(QVector<QPair<QString , int>>);
+    void checkLargestArmy();
+    ~Game();
 private:
     QSignalMapper *signalMapper;
     QVector<Player*> players;
@@ -47,8 +50,6 @@ private:
     bool start;
 
     static int diceNum;
-    static int currPlayer;
-    static int gameStarted_;
     static int player_;
     static int count;
 
@@ -57,6 +58,7 @@ public slots:
     void giveCardRoll();
     void playerTurn();
     void gotoRoll();
+    void robberSelected(QObject*);
     void slectedBuilding(QObject*);
     void slectedSetllement(QObject*);
     void slectedCity(QObject*);
