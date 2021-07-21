@@ -23,37 +23,35 @@ class Map : public QMainWindow
 public:
     Ui::Map *ui;
     explicit Map(QWidget *parent = nullptr);
-    void randomMap(QVector<QPixmap>,QVector<QPixmap> pixs_nums);
-    tileType TileType(int n);
+    void randomMap(QVector<QPixmap>,QVector<QPixmap>);
+    tileType TileType(int);
     QVector<Tile*> getTiles();
     QVector<QPushButton*> getAvailableVertexs();
     QVector<QPushButton*> getAvailableEdges();
+    QVector<QPushButton*> getTokens();
+    QPushButton* getRobberToken();
+    void setRobberToken(QPushButton*);
     void setHide(QVector<QPushButton*>);
     void setUnHide(QVector<QPushButton*>);
     void removeVertex(QPushButton*);
     void removeEdge(QPushButton*);
-    QVector<QLabel*> rollNumTile(int num);
-    bool tilesNumbers(int pixNum , QVector<int> tile_nums);
+    bool tilesNumbers(int, QVector<int>);
     bool tokenNumbers(int , QVector<int>);
     QVector<QPair<tileType,QPair<QPushButton*,QPushButton*>>> getPorts();
     ~Map();
-
-public slots:
-    void moveRobber(int);
 
 private:
     QSignalMapper *signalMapper;
 
     QVector<Tile*> tiles;
     QVector<QLabel*> labels;
-
+    QPushButton* robberToken;
     QVector<QPushButton*> vertexs;
     QVector<QPushButton*> edges;
     QVector<QPushButton*> tokens;
     QVector<QPushButton*> vertexsAvailable;
     QVector<QPushButton*> edgesAvailable;
     QVector<QPair<tileType,QPair<QPushButton*,QPushButton*>>> ports;
-    Robber robber();
 
 };
 
