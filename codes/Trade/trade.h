@@ -6,7 +6,7 @@
 #include <QMessageBox>
 
 #include "player.h"
-#include "Map.h"
+#include "map.h"
 #include "bank.h"
 
 namespace Ui {
@@ -25,6 +25,7 @@ public:
     int givePlayerId(QString name);
 
 public slots:
+    void backToPlayer();
     void TradeRequest(bool);
     void waitForCheckingConditions();
 
@@ -38,5 +39,3 @@ private:
 };
 
 #endif // TRADE_H
-
-
