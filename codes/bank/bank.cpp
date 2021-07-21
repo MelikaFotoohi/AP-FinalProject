@@ -157,3 +157,5 @@ void Bank::giveCardToWhom(Tile* tile,Player* player){
         giveResCardToPlayer(tile->getType());
     }
 }
+Bank::~Bank(){
+}
