@@ -10,7 +10,7 @@ class Dice : public QWidget
 public:
     explicit Dice(Map* _map,QWidget *parent = nullptr);
 public slots:
-    void roll();
+    int roll();
 private:
     static int diceNum;
     Map* map;
@@ -18,4 +18,3 @@ private:
 };
 
 #endif // DICE_H
-
