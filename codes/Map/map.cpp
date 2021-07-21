@@ -73,6 +73,7 @@ Map::Map(QWidget *parent) :
 {
     srand(time(NULL));
     ui->setupUi(this);
+    setWindowTitle("Board");
 
     QPixmap bkgnd(":/new/prefix1/backgrounds/sea.jpeg");
     bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
@@ -80,7 +81,7 @@ Map::Map(QWidget *parent) :
     palette.setBrush(QPalette::Window, bkgnd);
     this->setPalette(palette);
 
-    setFixedSize(945 , 865);
+    setFixedSize(1077 , 737);
 
     QPixmap pixmap_field(":/new/prefix1/tiles/tile_field.png");
     QPixmap pixmap_stone(":/new/prefix1/tiles/tile_stone.png");
@@ -105,6 +106,30 @@ Map::Map(QWidget *parent) :
     QPixmap pixmap_pasturePort(":/new/prefix1/ports/port_pasture.png");
     QPixmap pixmap_forestPort(":/new/prefix1/ports/port_forest.png");
     QPixmap pixmap_Port(":/new/prefix1/ports/port.png");
+
+    QPixmap blue_person(":/new/prefix1/players/blue_person.png");
+    QPixmap green_person(":/new/prefix1/players/green_person.png");
+    QPixmap red_person(":/new/prefix1/players/red_person1.png");
+    QPixmap yellow_person(":/new/prefix1/players/yellow_person.png");
+
+
+
+    QIcon icon1(blue_person);
+    ui->pushButton_149->setIcon(icon1);
+    ui->pushButton_149->setIconSize(red_person.rect().size());
+
+    QIcon icon2(green_person);
+    ui->pushButton_148->setIcon(icon2);
+    ui->pushButton_148->setIconSize(red_person.rect().size());
+
+    QIcon icon3(red_person);
+    ui->pushButton->setIcon(icon3);
+    ui->pushButton->setIconSize(red_person.rect().size());
+
+    QIcon icon4(yellow_person);
+    ui->pushButton_147->setIcon(icon4);
+    ui->pushButton_147->setIconSize(red_person.rect().size());
+
 
     ui->label_20->setPixmap(pixmap_Port);
     ui->label_20->setMask(pixmap_clayPort.mask());
