@@ -1,10 +1,10 @@
 #include "tile.h"
 
-Tile::Tile(tileType _type, int numToken, Location* _location)
+Tile::Tile(tileType _type, int numToken, QLabel* p)
 {
     type = _type;
     numberToken = numToken;
-    location = _location;
+    location = p;
 }
 
 ResourceCard Tile::getResource(){
@@ -22,18 +22,20 @@ ResourceCard Tile::getResource(){
 
 }
 
-Location* Tile::getLocation(){
+QLabel* Tile::getLocation(){
     return location;
-
 }
 
 tileType Tile::getType(){
     return type;
 }
-
-void Tile::getRobber(){
-    robberIsHere = !robberIsHere;
+int Tile::getToken(){
+    return numberToken;
+}
+void Tile::changeRobber(bool mode){
+    robberIsHere = mode;
 }
 bool Tile::checkRobber(){
     return robberIsHere;
 }
+
