@@ -25,6 +25,17 @@ Request::Request(QVector<QPair<tileType,QPair<int,int>>> _cards,Player* _other,P
     ui->pastureGiveNum->setText(QString::number(cards[4].second.second));
     ui->pastureRecNum->setText(QString::number(cards[4].second.first));
 
+    QPixmap pixmap_approve(":/new/prefix1/icons/icon_approve.jpg");
+    QIcon Button_approve(pixmap_approve);
+    ui->ok->setIcon(Button_approve);
+    ui->ok->setIconSize(pixmap_approve.rect().size());
+
+
+    QPixmap pixmap_cross(":/new/prefix1/icons/icon_cross.jpg");
+    QIcon Button_cross(pixmap_cross);
+    ui->ok->setIcon(Button_cross);
+    ui->ok->setIconSize(pixmap_cross.rect().size());
+
     connect(ui->ok,SIGNAL(clicked()),this,SLOT(ok()));
     connect(ui->cancel,SIGNAL(clicked()),this,SLOT(cancel()));
 }
