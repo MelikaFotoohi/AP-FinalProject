@@ -2,26 +2,22 @@
 #include "ui_login.h"
 
 
-Login::Login(QWidget *parent):QWidget(parent) , ui(new Ui::Login){
-
-    ui->setupUi(this);
-    setWindowTitle("Catan");
-    setFixedSize(440 , 290);
-    connect(ui->pushButton , SIGNAL(clicked()) , this , SLOT(openBoard()));
-
-}
-
-void Login::openBoard(){
-
-    Board *brd = new Board();
-    this->close();
-    brd->show();
-
-}
-
-Login::~Login()
+login::login(QWidget *parent):
+    QMainWindow(parent) ,
+    ui(new Ui::login)
 {
 
+    ui->setupUi(this);
+    QPixmap image(":/new/prefix1/backgrounds/images.jpeg");
+    ui->label->setPixmap(image);
+    ui->label->setMask(image.mask());
+    setWindowTitle("Catan");
+    setFixedSize(440 , 290);
+
 }
 
-
+void login::startGame(){}
+login::~login()
+{
+    delete ui;
+}
